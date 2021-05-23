@@ -1,4 +1,30 @@
-{include file="header.tpl"}
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2021-05-23 01:58:15
+  from 'C:\xampp\htdocs\tpe-metodologias\TPE-IMDS-grupo02\Pagina Web\CoperativaDeReciclaje\templates\home.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_60a99a977351d0_33250492',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'd46960a0a1592892e3451061619f2c700e08b0dc' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\tpe-metodologias\\TPE-IMDS-grupo02\\Pagina Web\\CoperativaDeReciclaje\\templates\\home.tpl',
+      1 => 1621727890,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.tpl' => 1,
+    'file:footer.tpl' => 1,
+  ),
+),false)) {
+function content_60a99a977351d0_33250492 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 <body class="fondo">
     <section class="overlay">
         <h2>¿Quienés somos?</h2>
@@ -29,4 +55,6 @@
         <p>Ahora ya sabes... ¡Manos a la obra y a reciclar!</p>
     </section>
 </body>
-{include file="footer.tpl"}
+<?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
+}
