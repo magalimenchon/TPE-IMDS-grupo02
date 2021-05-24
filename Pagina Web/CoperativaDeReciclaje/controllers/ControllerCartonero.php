@@ -18,4 +18,5 @@ class ControllerCartonero
     {
         $this->view->mostrarHome();
     }
+
 }

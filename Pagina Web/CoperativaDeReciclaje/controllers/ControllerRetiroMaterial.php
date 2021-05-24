@@ -14,4 +14,5 @@ class ControllerRetiroMaterial
         $this->view = new View();
         $this->modelRetiroMaterial = new ModelRetiroMaterial();
     }
+
 }

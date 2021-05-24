@@ -14,4 +14,5 @@ class ControllerOfertaTransporte
         $this->view = new View();
         $this->modelOfertaTransporte = new ModelOfertaTransporte();
     }
+
 }
