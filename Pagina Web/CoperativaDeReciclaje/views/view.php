@@ -15,6 +15,14 @@ class View{
 
         $this->smarty->display('templates/home.tpl');
     }
+
+    function mostrarMateriales($sesion = null){
+
+        $this->smarty->assign('base_url', BASE_URL);
+        $this->smarty->assign('titulo', $this->titulo);
+
+        $this->smarty->display('templates/materiales.tpl');
+    }
     
     function mostrarError($mensaje){
         echo "$mensaje";

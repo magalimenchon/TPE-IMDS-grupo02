@@ -10,6 +10,7 @@
     $ruter = new Router();
 
     $ruter->addRoute("home", "GET", "ControllerCartonero", "viewHome");
+    $ruter->addRoute("materiales", "GET", "ControllerMaterial", "viewMateriales");
 
     $ruter->setDefaultRoute("ControllerCartonero", "viewHome");
 

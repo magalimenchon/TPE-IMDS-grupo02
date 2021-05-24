@@ -14,7 +14,7 @@
         <ul class="nav justify-content-center">
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="home" </span>Home</a></li>
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="">Ofertas</a></li>
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="">Materiales</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="materiales">Materiales</a></li>
         </ul>
     </nav>
 </header>
