@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-05-2021 a las 16:53:22
+-- Tiempo de generación: 24-05-2021 a las 21:58:12
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `metodologia_database`
+-- Base de datos: `metodologia_database1`
 --
 
 -- --------------------------------------------------------
@@ -73,8 +73,8 @@ CREATE TABLE `retiro_materiales` (
   `categoria` char(1) NOT NULL,
   `inicio_horario_retiro` time NOT NULL,
   `fin_horario_retiro` time NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `DNI_cartonero` int(11) DEFAULT NULL
+  `DNI_cartonero` int(11) DEFAULT NULL,
+  `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -113,7 +113,7 @@ ALTER TABLE `especificacion_materiales`
 --
 ALTER TABLE `oferta_transporte`
   ADD PRIMARY KEY (`id_oferta`),
-  ADD KEY `FK_OFERTA_TRANSPORTE_USUARIO` (`id_usuario`);
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `retiro_materiales`
@@ -121,13 +121,41 @@ ALTER TABLE `oferta_transporte`
 ALTER TABLE `retiro_materiales`
   ADD PRIMARY KEY (`id_retiro`),
   ADD KEY `FK_RETIRO_MATERIALES_CARTONERO` (`DNI_cartonero`),
-  ADD KEY `FK_RETIRO_MATERIALES_USUARIO` (`id_usuario`);
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `especificacion_materiales`
+--
+ALTER TABLE `especificacion_materiales`
+  MODIFY `id_especificacion` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `oferta_transporte`
+--
+ALTER TABLE `oferta_transporte`
+  MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `retiro_materiales`
+--
+ALTER TABLE `retiro_materiales`
+  MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -137,14 +165,14 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `oferta_transporte`
 --
 ALTER TABLE `oferta_transporte`
-  ADD CONSTRAINT `FK_OFERTA_TRANSPORTE_USUARIO` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `oferta_transporte_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `retiro_materiales`
 --
 ALTER TABLE `retiro_materiales`
   ADD CONSTRAINT `FK_RETIRO_MATERIALES_CARTONERO` FOREIGN KEY (`DNI_cartonero`) REFERENCES `cartonero` (`DNI_cartonero`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_RETIRO_MATERIALES_USUARIO` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `retiro_materiales_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
