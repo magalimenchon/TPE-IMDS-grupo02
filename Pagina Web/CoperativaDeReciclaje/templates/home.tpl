@@ -31,7 +31,7 @@
     <h2></h2>
     <section class="overlay">
         <h2>¿Que podemos reciclar?</h2>
-        <table class="table">
+        <table class="table mb-3">
             <tbody>
               <tr class="table-primary">
                 <th scope="row">Aluminio</th>
@@ -90,5 +90,7 @@
             </tbody>
           </table>
     </section>
+    <h2></h2>
+    {include file="formularioRetiro.tpl"}
 </body>
 {include file="footer.tpl"}
