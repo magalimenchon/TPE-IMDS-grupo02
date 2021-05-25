@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2021 a las 21:58:12
+-- Tiempo de generación: 25-05-2021 a las 22:04:33
 -- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Versión de PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `metodologia_database1`
+-- Base de datos: `metodologia_database`
 --
 
 -- --------------------------------------------------------
@@ -69,7 +69,7 @@ CREATE TABLE `oferta_transporte` (
 
 CREATE TABLE `retiro_materiales` (
   `id_retiro` int(11) NOT NULL,
-  `foto` blob DEFAULT NULL,
+  `foto` varchar(90) DEFAULT NULL,
   `categoria` char(1) NOT NULL,
   `inicio_horario_retiro` time NOT NULL,
   `fin_horario_retiro` time NOT NULL,
@@ -86,10 +86,10 @@ CREATE TABLE `retiro_materiales` (
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `nombre_usuario` varchar(50) NOT NULL,
-  `apellido_usuario` int(11) NOT NULL,
+  `apellido_usuario` varchar(50) NOT NULL,
   `telefono_usuario` int(11) NOT NULL,
-  `direccion_usuario` int(11) NOT NULL,
-  `mail_usuario` varchar(70) NOT NULL
+  `direccion_usuario` varchar(50) NOT NULL,
+  `mail_usuario` varchar(70) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -149,13 +149,13 @@ ALTER TABLE `oferta_transporte`
 -- AUTO_INCREMENT de la tabla `retiro_materiales`
 --
 ALTER TABLE `retiro_materiales`
-  MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- Restricciones para tablas volcadas

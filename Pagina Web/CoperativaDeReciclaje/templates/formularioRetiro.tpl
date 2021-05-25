@@ -27,10 +27,10 @@
                 <div class="mb-3">
                     <label for="title">Categoria de volumen</label>
                     <select name="input_retiro_categoria">
-                        <option value="caja">Entra en una caja</option>
-                        <option value="auto">Entra en el baúl de un auto</option>
-                        <option value="camioneta">Entra en la caja de una camioneta</option>
-                        <option value="camion">Se necesita un camión</option>
+                        <option value="a">Entra en una caja</option>
+                        <option value="b">Entra en el baúl de un auto</option>
+                        <option value="c">Entra en la caja de una camioneta</option>
+                        <option value="d">Se necesita un camión</option>
                     </select>
                 </div>
                 <div class="mb-3">

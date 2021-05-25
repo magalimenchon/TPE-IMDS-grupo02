@@ -13,7 +13,7 @@
     <nav class="navegador">
         <ul class="ulnav nav justify-content-center">
             <li class="nav-item"><a class="link nav-link active" aria-current="page" href="home" </span>Home</a></li>
-            <li class="nav-item"><a class="link nav-link active" aria-current="page" href="">Ofertas</a></li>
+            <li class="nav-item"><a class="link nav-link active" aria-current="page" href="retiro">Solicitar retiro</a></li>
             <li class="nav-item"><a class="link nav-link active" aria-current="page" href="materiales">Materiales</a></li>
         </ul>
     </nav>
