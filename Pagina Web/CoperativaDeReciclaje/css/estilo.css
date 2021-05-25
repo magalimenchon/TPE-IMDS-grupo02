@@ -213,7 +213,7 @@ table{
     background-color: lightgray;
     border-radius: 5px;
     border-collapse: collapse;
-    max-width: 700px;
+    max-width: 1000px;
 }
 td{
     padding: 3px 5px ;
@@ -437,6 +437,10 @@ button{
     border-radius: 5px;
     margin-left: 150px;
     margin-right: 150px;
-    opacity: 0.8;
+    opacity: 0.9;
     padding: 20px;
+}
+
+.black{
+    font-weight: bold;
 }
