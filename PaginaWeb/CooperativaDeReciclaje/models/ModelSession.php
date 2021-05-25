@@ -41,7 +41,7 @@ class ModelSession
                                  FROM usuario 
                                  WHERE nombre_usuario=?
                                  AND apellido_usuario=?
-                                 AND telefono_usuario=?');
+                                 AND direccion_usuario=?');
 
     $query->execute(array($nombre, $apellido, $direccion));
 

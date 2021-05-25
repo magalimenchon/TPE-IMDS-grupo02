@@ -57,6 +57,7 @@ class ControllerRetiroMaterial
                     $this->viewRetiro->mostrarMensaje("danger","Ya ha solicitado el retiro.");
                 } else {   //si no existe solicitud en la base de datos
                     $this->insertarRetiro($categoria, $inicioHorario, $finHorario, $usuario->id_usuario, $tmp_imagen);
+                    $this->viewRetiro->mostrarMensaje("success","La solicitud ha sido enviada. Recibirá su confirmación vía mail.");
                 }
             } else {
                 $usuario = $this->modelUser->insertUsuario($nombre, $apellido, $telefono, $direccion);

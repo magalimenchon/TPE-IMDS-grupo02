@@ -1,10 +1,38 @@
-{include file="header.tpl"}
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2021-05-26 00:39:19
+  from 'C:\xampp\htdocs\TPE-IMDS\TPE-IMDS-grupo02\Pagina Web\CoperativaDeReciclaje\templates\formularioRetiro.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_60ad7c9727b953_88503149',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '6f15e9edbba2c4fcdaa2dd498ed7a09f64caad5d' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\TPE-IMDS\\TPE-IMDS-grupo02\\Pagina Web\\CoperativaDeReciclaje\\templates\\formularioRetiro.tpl',
+      1 => 1621982357,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.tpl' => 1,
+    'file:mensaje.tpl' => 1,
+    'file:footer.tpl' => 1,
+  ),
+),false)) {
+function content_60ad7c9727b953_88503149 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 <body class="fondo">
         <section class="overlay">
             <h2>Retiro de materiales</h2>
 
-            {include file="mensaje.tpl"}
+            <?php $_smarty_tpl->_subTemplateRender("file:mensaje.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
             
             <form action="retiro" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
@@ -36,8 +64,8 @@
                 <div class="mb-3">
                     <label for="title">Franja horaria de retiro</label>
                     <select name="input_franja_horaria" id="">
-                        <option value="9:00-12:00">9:00-12:00</option>
-                        <option value="13:00-17:00">13:00-17:00</option>
+                        <option value="09:00:00-12:00:00">9:00-12:00</option>
+                        <option value="13:00:00-17:00:00">13:00-17:00</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -49,4 +77,6 @@
             </form>
         </section>
 </body>
-{include file="footer.tpl"}
+<?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
+}
