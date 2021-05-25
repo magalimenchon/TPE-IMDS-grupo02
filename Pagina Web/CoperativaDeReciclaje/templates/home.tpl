@@ -28,6 +28,5 @@
         </p>
         <p>Ahora ya sabes... ¡Manos a la obra y a reciclar!</p>
     </section>
-    {include file="formularioRetiro.tpl"}
 </body>
 {include file="footer.tpl"}

@@ -12,6 +12,9 @@
     $ruter->addRoute("home", "GET", "ControllerCartonero", "viewHome");
     $ruter->addRoute("materiales", "GET", "ControllerMaterial", "viewMateriales");
 
+    $ruter->addRoute("retiro", "GET", "ControllerRetiroMaterial", "viewRetiro");
+    $ruter->addRoute("retiro", "POST", "ControllerRetiroMaterial", "retiro");
+    
     $ruter->setDefaultRoute("ControllerCartonero", "viewHome");
 
     $ruter->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
