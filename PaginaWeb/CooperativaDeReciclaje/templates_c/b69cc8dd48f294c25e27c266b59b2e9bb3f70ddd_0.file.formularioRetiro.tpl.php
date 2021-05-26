@@ -1,10 +1,38 @@
-{include file="header.tpl"}
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2021-05-26 17:41:23
+  from 'C:\xampp\htdocs\TPE_IMDS\TPE-IMDS-grupo02\PaginaWeb\CooperativaDeReciclaje\templates\formularioRetiro.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_60ae6c23888863_36195913',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'b69cc8dd48f294c25e27c266b59b2e9bb3f70ddd' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\TPE_IMDS\\TPE-IMDS-grupo02\\PaginaWeb\\CooperativaDeReciclaje\\templates\\formularioRetiro.tpl',
+      1 => 1622043681,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.tpl' => 1,
+    'file:mensaje.tpl' => 1,
+    'file:footer.tpl' => 1,
+  ),
+),false)) {
+function content_60ae6c23888863_36195913 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 <body class="fondo">
         <section class="overlay">
             <h2>Retiro de materiales</h2>
 
-            {include file="mensaje.tpl"}
+            <?php $_smarty_tpl->_subTemplateRender("file:mensaje.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
             
             <form action="retiro" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
@@ -52,4 +80,6 @@
             </form>
         </section>
 </body>
-{include file="footer.tpl"}
+<?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
+}
