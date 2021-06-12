@@ -3,6 +3,7 @@
     require_once 'controllers/ControllerMaterial.php';
     require_once 'controllers/ControllerOfertaTransporte.php';
     require_once 'controllers/ControllerRetiroMaterial.php';
+    require_once 'controllers/ControllerRecoleccionMaterial.php';
     require_once 'controllers/ControllerSession.php';
     require_once 'routerclass.php';
     
@@ -15,6 +16,14 @@
     $router->addRoute("retiro", "GET", "ControllerRetiroMaterial", "viewRetiro");
     $router->addRoute("retiro", "POST", "ControllerRetiroMaterial", "retiro");
     
+
+    //---- SPRINT 2 ----
+
+    $router->addRoute("recoleccion", "GET", "ControllerRecoleccionMaterial", "viewRecoleccion");
+    $router->addRoute("recoleccion", "POST", "ControllerRecoleccionMaterial", "recoleccion");
+
+    //--------
+
     $router->setDefaultRoute("ControllerCartonero", "viewHome");
 
     $router->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 

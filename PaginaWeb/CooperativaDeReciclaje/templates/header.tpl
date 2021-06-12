@@ -15,6 +15,17 @@
             <li class="nav-item"><a class="link nav-link active" aria-current="page" href="home" </span>Home</a></li>
             <li class="nav-item"><a class="link nav-link active" aria-current="page" href="retiro">Solicitar retiro</a></li>
             <li class="nav-item"><a class="link nav-link active" aria-current="page" href="materiales">Materiales</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Modificaciones
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">  <!--agregar css de class navegador o bien cambiar color de letras-->
+                    <a class="dropdown-item"  href="#">Materiales aceptados</a>
+                    <a class="dropdown-item" href="recoleccion">Recolección de materiales</a>
+                        <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Pedidos de retiro</a>
+                </div>
+            </li>
         </ul>
     </nav>
 </header>

@@ -31,4 +31,12 @@ class ModelMaterial
       $query = $this->db->prepare("UPDATE especificacion_materiales SET nombre_mat=?, detalle=? WHERE id_especificacion=?");
       $query->execute(array($nombre, $detalle, $id));
     }
+
+    //Obtener todos los materiales
+    function getMateriales()
+    {
+      $query = $this->db->prepare('SELECT * FROM especificacion_materiales');
+      $query->execute();
+      return  $query->fetchAll(PDO::FETCH_OBJ);
+    }
 }
