@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2021 a las 22:04:33
+-- Tiempo de generación: 12-06-2021 a las 06:07:45
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.2.34
 
@@ -64,6 +64,20 @@ CREATE TABLE `oferta_transporte` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `recoleccion_materiales`
+--
+
+CREATE TABLE `recoleccion_materiales` (
+  `id_recoleccion` int(11) NOT NULL,
+  `peso_material_recolectado` int(11) NOT NULL,
+  `fecha_recoleccion` date NOT NULL DEFAULT current_timestamp(),
+  `id_especificacion_material` int(11) NOT NULL,
+  `DNI_cartonero` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `retiro_materiales`
 --
 
@@ -116,6 +130,14 @@ ALTER TABLE `oferta_transporte`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
+-- Indices de la tabla `recoleccion_materiales`
+--
+ALTER TABLE `recoleccion_materiales`
+  ADD PRIMARY KEY (`id_recoleccion`),
+  ADD KEY `DNI_cartonero` (`DNI_cartonero`),
+  ADD KEY `id_especificacion_material` (`id_especificacion_material`);
+
+--
 -- Indices de la tabla `retiro_materiales`
 --
 ALTER TABLE `retiro_materiales`
@@ -146,6 +168,12 @@ ALTER TABLE `oferta_transporte`
   MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `recoleccion_materiales`
+--
+ALTER TABLE `recoleccion_materiales`
+  MODIFY `id_recoleccion` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `retiro_materiales`
 --
 ALTER TABLE `retiro_materiales`
@@ -166,6 +194,13 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `oferta_transporte`
   ADD CONSTRAINT `oferta_transporte_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `recoleccion_materiales`
+--
+ALTER TABLE `recoleccion_materiales`
+  ADD CONSTRAINT `recoleccion_materiales_ibfk_1` FOREIGN KEY (`DNI_cartonero`) REFERENCES `cartonero` (`DNI_cartonero`),
+  ADD CONSTRAINT `recoleccion_materiales_ibfk_2` FOREIGN KEY (`id_especificacion_material`) REFERENCES `especificacion_materiales` (`id_especificacion`);
 
 --
 -- Filtros para la tabla `retiro_materiales`
