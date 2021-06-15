@@ -26,4 +26,11 @@ class ViewRetiroMaterial
        
         $this->smarty->display('templates/formularioRetiro.tpl');
     }
+
+    function mostrarListadoPedidosRetiro($pedidos)
+    {
+        $this->smarty->assign('base_url', BASE_URL);
+        $this->smarty->assign('pedidos', $pedidos);
+        $this->smarty->display('templates/listadoPedidosRetiro.tpl');
+    }
 }

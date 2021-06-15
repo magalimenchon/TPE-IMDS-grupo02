@@ -10,6 +10,14 @@ class ModelRetiroMaterial
     //  $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
 
+  //obtener pedidos de retiro
+  function getPedidosRetiro() 
+  {
+    $query =$this->db->prepare('SELECT * FROM retiro_materiales');
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_OBJ);
+  }
+
   //alta
   function insertRetiro($categoria, $iniHorario, $finHorario, $idUsuario, $foto = null, $idCartonero = null)
   {

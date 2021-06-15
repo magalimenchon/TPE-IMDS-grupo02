@@ -21,9 +21,11 @@
     
 
     //---- SPRINT 2 ----
-
+    
     $router->addRoute("recoleccion", "GET", "ControllerRecoleccionMaterial", "viewRecoleccion");
     $router->addRoute("recoleccion", "POST", "ControllerRecoleccionMaterial", "recoleccion");
+
+    $router->addRoute("listadoPedidoRetiro", "GET", "ControllerRetiroMaterial", "viewListaRetiros");
 
     $router->addRoute("materialesAceptados", "GET", "ControllerMaterialAceptado", "viewMaterialesAceptados");
     $router->addRoute("borrar_material/:ID", "GET", "ControllerMaterialAceptado", "deleteMaterialAceptado");

@@ -24,7 +24,7 @@
                     <a class="dropdown-item"  href="#">Materiales aceptados</a>
                     <a class="dropdown-item" href="recoleccion">Recolección de materiales</a>
                         <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Pedidos de retiro</a>
+                    <a class="dropdown-item" href="listadoPedidoRetiro">Pedidos de retiro</a>
                 </div>
             </li>
         </ul>

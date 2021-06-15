@@ -24,6 +24,12 @@ class ControllerRetiroMaterial
         $this->viewRetiro->mostrarFormularioRetiro();
     }
 
+    function viewListaRetiros()
+    {
+        $pedidos=$this->modelRetiro->getPedidosRetiro();
+        $this->viewRetiro->mostrarListadoPedidosRetiro($pedidos);
+    }
+
     //alta
     function retiro()
     {
@@ -92,4 +98,6 @@ class ControllerRetiroMaterial
         }
         else return false;
     }
+
+    
 }
