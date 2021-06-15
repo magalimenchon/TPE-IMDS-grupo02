@@ -15,6 +15,7 @@
                     Aplastar con el pie, sobre una superficie antideslizante o compactador manual, nunca con las manos ya que podes sufrir un corte.
                     Sin restos líquidos, dale un pequeño enjuague o dejalas escurrir en el lavaplatos por unos minutos. Evita introducir basuras y colillas de cigarrillos.</td>
                 <td><img src="./img/latas.jpg"></td>
+                <td><a type="button" {*href="borrar_material/$material->id_especificacion"*} class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
             <tr class="table-danger">
                 <th scope="row">Cartón</th>
@@ -28,6 +29,7 @@
                     No se reciben envases plastificados como de productos congelados o detergente en polvo. Tampoco cajas de huevo y embalajes similares.
                     Revisa que los envases no contengan sobres, restos de comida, cereales o restos de embalajes.</td>
                 <td><img src="./img/papel.jpg"></td>
+                <td><a type="button" {*href="borrar_material/$material->id_especificacion"*} class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
             <tr class="table-success">
                 <th scope="row">Plástico</th>
@@ -43,6 +45,7 @@
                     Retirar las tapas, disponer en forma separada, plástico específico PP5. 
                     Retirar etiquetas plásticas, especialmente envases para yogurt y leche de 1 litro, limpiadores, cloro.</td>
                 <td><img src="./img/plastico.jpg"></td>
+                <td><a type="button" {*href="borrar_material/$material->id_especificacion"*} class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
             <tr class="table-info">
                 <th scope="row">Tetrabrik</th>
@@ -53,6 +56,7 @@
                     Siempre desarmar la caja, abre las puntas. Para dar un pequeño enjuague para limpiarlos te recomendamos abrir la parte superior con una tijera o cuchillo.
                     Luego déjalas escurrir en el lavaplatos o secador de platos por unos minutos. Retirar bombillas y tapas plásticas.</td>
                 <td><img src="./img/tetrabrik.jpg"></td>
+                <td><a type="button" {*href="borrar_material/$material->id_especificacion"*} class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
             <tr class="table-primary">
                 <th scope="row">Latas</th>
@@ -62,6 +66,7 @@
                     Limpios, sin restos de alimentos, líquidos o grasas.
                     Dar siempre un pequeño enjuague.</td>
                 <td><img src="./img/latas.jpg"></td>
+                <td><a type="button" {*href="borrar_material/$material->id_especificacion"*} class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
             <tr class="table-secondary">
                 <th scope="row">Papel</th>
@@ -74,6 +79,7 @@
                     Sólo en el caso de hojas blancas trituradas entregar en una bolsa plástica en forma separada.
                     No disponer papeles pequeños, sobres, hojas picadas o despuntes; hojas con tempera, pegamentos u otros elementos contaminantes. Cuadernos sin tapa ni espirales.</td>
                 <td><img src="./img/papel.jpg"></td>
+                <td><a type="button" {*href="borrar_material/$material->id_especificacion"*} class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
             <tr class="table-active">
                 <th scope="row">Botellas de vidrio</th>
@@ -84,6 +90,7 @@
                     Se recomienda limpiarlo con agua y dejar escurrir volteados en el lavaplatos por unos minutos antes de su acopio.
                     Importante, no mezclar con loza, cerámica, ventanas, espejos, vasos, frascos de perfume, estos materiales son contaminantes y deben ser tratados en forma separada.</td>
                 <td><img src="./img/vidrio.jpg"></td>
+                <td><a type="button" {*href="borrar_material/$material->id_especificacion"*} class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
             </tbody>
         </table>
