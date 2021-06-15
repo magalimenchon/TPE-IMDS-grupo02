@@ -13,4 +13,8 @@ class Controller{
         $this->view->mostrarHome();
     }
 
+    function viewMaterial(){
+        $this->view->mostrarMateriales();
+    }
+
 }

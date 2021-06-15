@@ -9,12 +9,12 @@
     $router = new Router();
 
     $router->addRoute("home", "GET", "Controller", "viewHome");
-    $router->addRoute("materiales", "GET", "ControllerMaterial", "viewMateriales");
+    // $router->addRoute("materiales", "GET", "ControllerMaterial", "viewMateriales");
 
 
     $router->addRoute("retiro", "GET", "ControllerRetiroMaterial", "viewRetiro");
     $router->addRoute("retiro", "POST", "ControllerRetiroMaterial", "retiro");
-    $router->addRoute("material_aceptado", "POST", "ControllerMaterialAceptado", "insertMaterialAceptado");
+
     
 
     //---- SPRINT 2 ----
@@ -25,10 +25,11 @@
     $router->addRoute("listadoPedidoRetiro", "GET", "ControllerRetiroMaterial", "viewListaRetiros");
 
     $router->addRoute("materialesAceptados", "GET", "ControllerMaterialAceptado", "viewMaterialesAceptados");
-    $router->addRoute("borrar_material/:ID", "GET", "ControllerMaterialAceptado", "deleteMaterialAceptado");
+    $router->addRoute("material_aceptado", "POST", "ControllerMaterialAceptado", "insertMaterialAceptado");
     $router->addRoute("modificar_material", "POST", "ControllerMaterialAceptado", "updateMaterialAceptado");
+    $router->addRoute("borrar_material/:ID", "GET", "ControllerMaterialAceptado", "deleteMaterialAceptado");
     //--------
 
-    $router->setDefaultRoute("ControllerCartonero", "viewHome");
+    $router->setDefaultRoute("Controller", "viewHome");
 
     $router->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 

@@ -17,7 +17,7 @@ class ViewMaterialAceptado
 
         $this->smarty->assign('materiales', $materiales);
 
-        $this->smarty->display('templates/visualizacionMateriale.tpl');
+        $this->smarty->display('templates/visualizacionMateriales.tpl');
     }
 
     function mostrarMensaje($materiales, $tipoAlerta, $mensaje){

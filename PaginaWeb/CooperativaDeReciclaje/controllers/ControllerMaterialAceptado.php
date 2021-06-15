@@ -19,29 +19,58 @@ class ControllerMaterialAceptado
         $materiales = $this->modelMaterialAceptado->getMateriales();
         $this->viewMaterialAceptado->mostrarMaterialesAceptados($materiales);
     }
+
     function insertMaterialAceptado()
     {
         $materiales = $this->modelMaterialAceptado->getMateriales();
-        $nombre = $_POST['input_material_aceptado_nombre_fk'];
-        $detalle = $_POST['input_material_aceptado_detalle_fk'];
+        $nombre = $_POST['material_nombre'];
+        $detalle = $_POST['material_detalle'];
+        $noAceptado = $_POST['material_noAceptado'];
+        $formaEntrega = $_POST['material_formaEntrega'];
+        $imagenMaterial = $_FILES['material_imagen']['tmp_name'];
         if (
             isset($nombre) && !empty($nombre) &&
-            isset($detalle) && !empty($detalle)
-        ) {
-            $this->modelMaterialAceptado->insertMaterial($nombre, $detalle);
-            $this->viewMaterialesAceptados();
-        } else  $this->viewMaterialAceptado->mostrarMensaje($materiales,"danger", "Complete todos los campos.");
+            isset($detalle) && !empty($detalle) &&
+            isset($noAceptado) && !empty($noAceptado) &&
+            isset($formaEntrega) && !empty($formaEntrega)
+        ){
+            if (empty($imagenMaterial)) { //si no hay imagen
+                $this->modelMaterialAceptado->insertMaterial($nombre, $detalle, $noAceptado, $formaEntrega);
+            } else {   //si hay imagen
+                
+                if ($this->formatoImagenValido($_FILES['material_imagen']['tmp_name'])) { //checkeo que el formato sea válido
+                    $this->modelMaterialAceptado->insertMaterial($nombre, $detalle, $noAceptado, $formaEntrega, $imagenMaterial);
+                } else {
+                    $this->viewMaterialAceptado->mostrarMensaje($materiales,"danger","Ingrese una imágen con formato jpg o jpeg o png.");
+                }
+            }
+           
+        } else { $this->viewMaterialAceptado->mostrarMensaje($materiales,"danger", "Complete todos los campos."); }
     }
+    
+  //Alta -> Checkea si la imagen es del tipo correspondiente
+  private function formatoImagenValido($tipoImagen)
+  {
+      if($tipoImagen == "image/jpg" || $tipoImagen == "image/jpeg" || $tipoImagen == "image/png" ) {
+          return true;
+      }
+      else return false;
+  }
+
     function deleteMaterialAceptado($params = null){
         $id_material = $params[":ID"];
         $this->modelMaterialAceptado->deleteMaterial($id_material);
         $this->viewMaterialesAceptados();
     }
+
     function updateMaterialAceptado(){
         $id = $_POST['material_id'];
         $nombre = $_POST['material_nombre'];
         $detalle = $_POST['material_detalle'];
-        $this->modelMaterialAceptado->updateMaterial($id,$nombre, $detalle);
+        $noAceptado = $_POST['material_noAceptado'];
+        $formaEntrega = $_POST['material_formaEntrega'];
+        $imagenMaterial = $_POST['material_imagen'];
+        $this->modelMaterialAceptado->updateMaterial($id, $nombre, $detalle, $noAceptado, $formaEntrega, $imagenMaterial);
         $this->viewMaterialesAceptados();
     }
 }

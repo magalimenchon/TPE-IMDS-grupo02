@@ -11,13 +11,25 @@ class ModelMaterial
     }
 
     //alta
-    function insertMaterial($nombre, $detalle)
+    function insertMaterial($nombre, $detalle, $noAceptado, $formaEntrega, $imagenMaterial = null)
     {
-      $query = $this->db->prepare('INSERT INTO especificacion_materiales(nombre_mat, detalle) VALUES(?,?)');
-      $query->execute(array($nombre, $detalle));
+      $rutaFoto = null;
+    if ($imagenMaterial) {
+      $rutaFoto = $this->generarRutaImagen($imagenMaterial);
+    }
+      $query = $this->db->prepare('INSERT INTO especificacion_materiales(nombre_mat, detalle, no_aceptado,
+        forma_entrega, imagen_material) VALUES(?,?,?,?,?)');
+      $query->execute(array($nombre, $detalle, $noAceptado, $formaEntrega, $rutaFoto));
       return $this->db->lastInsertId();
     }
 
+     //Alta -> Generar ruta para la imagen
+    private function generarRutaImagen($foto)
+    {
+      $ruta = 'img/temp/' . uniqid() . ".jpg";  //genero ruta
+      move_uploaded_file($foto, $ruta);
+      return $ruta;
+    }
     //baja
     function deleteMaterial($id)
     {
@@ -26,10 +38,11 @@ class ModelMaterial
     }
 
     //modificación
-    function updateMaterial($id, $nombre, $detalle)
+    function updateMaterial($id, $nombre, $detalle, $noAceptado, $formaEntrega, $imagenMaterial)
     {
-      $query = $this->db->prepare("UPDATE especificacion_materiales SET nombre_mat=?, detalle=? WHERE id_especificacion=?");
-      $query->execute(array($nombre, $detalle, $id));
+      $query = $this->db->prepare("UPDATE especificacion_materiales SET nombre_mat=?, detalle=?,
+        no_aceptado=?, forma_entrega=?, imagen_material=? WHERE id_especificacion=?");
+      $query->execute(array($nombre, $detalle, $noAceptado, $formaEntrega, $imagenMaterial, $id));
     }
 
     //Obtener todos los materiales
