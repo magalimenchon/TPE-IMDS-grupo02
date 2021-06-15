@@ -3,22 +3,18 @@
 require_once './models/ModelRecoleccionMaterial.php';
 require_once './views/ViewRecoleccionMaterial.php';
 
-require_once './models/ModelSession.php';
-
 class ControllerRecoleccionMaterial
 {
 
     private $viewRecoleccion;
     private $modelRecoleccion;
     private $modelMaterial;
-    private $modelUser;
 
     function __construct()
     {
         $this->viewRecoleccion = new ViewRecoleccionMaterial();
         $this->modelRecoleccion = new ModelRecoleccionMaterial();
         $this->modelMaterial = new ModelMaterial();
-        $this->modelUser = new ModelSession();
     }
 
     function viewRecoleccion()

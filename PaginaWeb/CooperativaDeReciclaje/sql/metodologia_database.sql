@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2021 a las 06:07:45
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.2.34
+-- Tiempo de generación: 15-06-2021 a las 21:31:12
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,7 +45,10 @@ CREATE TABLE `cartonero` (
 CREATE TABLE `especificacion_materiales` (
   `id_especificacion` int(11) NOT NULL,
   `nombre_mat` varchar(30) NOT NULL,
-  `detalle` varchar(250) NOT NULL
+  `detalle` varchar(250) NOT NULL,
+  `no_aceptado` varchar(250) NOT NULL,
+  `forma_entrega` varchar(250) NOT NULL,
+  `imagen_material` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -159,7 +162,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `especificacion_materiales`
 --
 ALTER TABLE `especificacion_materiales`
-  MODIFY `id_especificacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_especificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `oferta_transporte`

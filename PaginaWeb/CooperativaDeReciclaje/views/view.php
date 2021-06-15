@@ -8,7 +8,7 @@ class View{
         $this->smarty = new Smarty();
     }
 
-    function mostrarHome($sesion = null){
+    function mostrarHome(){
 
         $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('titulo', $this->titulo);
@@ -16,7 +16,7 @@ class View{
         $this->smarty->display('templates/home.tpl');
     }
 
-    function mostrarMateriales($sesion = null){
+    function mostrarMateriales(){
 
         $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('titulo', $this->titulo);

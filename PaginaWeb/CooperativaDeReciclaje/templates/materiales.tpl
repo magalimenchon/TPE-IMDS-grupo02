@@ -16,6 +16,7 @@
                     Sin restos líquidos, dale un pequeño enjuague o dejalas escurrir en el lavaplatos por unos minutos. Evita introducir basuras y colillas de cigarrillos.</td>
                 <td><img src="./img/latas.jpg"></td>
                 <td><a type="button" {*href="borrar_material/$material->id_especificacion"*} class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
+                <td><a type="button" {*href="editar_material/$material->id_especificacion"*} class="btn btn-light"><i class="far fa-edit"></i></a></td>
             </tr>
             <tr class="table-danger">
                 <th scope="row">Cartón</th>
