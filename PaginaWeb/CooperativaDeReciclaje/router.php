@@ -27,6 +27,7 @@
     $router->addRoute("materialesAceptados", "GET", "ControllerMaterialAceptado", "viewMaterialesAceptados");
     $router->addRoute("material_aceptado", "POST", "ControllerMaterialAceptado", "insertMaterialAceptado");
     $router->addRoute("modificar_material", "POST", "ControllerMaterialAceptado", "updateMaterialAceptado");
+    $router->addRoute("editar_material/:ID", "GET", "ControllerMaterialAceptado", "editarMaterialAceptado");
     $router->addRoute("borrar_material/:ID", "GET", "ControllerMaterialAceptado", "deleteMaterialAceptado");
     //--------
 

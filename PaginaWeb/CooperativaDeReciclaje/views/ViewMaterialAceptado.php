@@ -20,6 +20,15 @@ class ViewMaterialAceptado
         $this->smarty->display('templates/visualizacionMateriales.tpl');
     }
 
+    function mostrarEdicionMaterial($material)
+    {
+        $this->smarty->assign('base_url', BASE_URL);
+
+        $this->smarty->assign('material', $material);
+
+        $this->smarty->display('templates/editarMaterial.tpl');
+    }
+
     function mostrarMensaje($materiales, $tipoAlerta, $mensaje){
         
         $this->smarty->assign('base_url', BASE_URL);
@@ -28,6 +37,17 @@ class ViewMaterialAceptado
         $this->smarty->assign('tipoAlerta', $tipoAlerta);
         $this->smarty->assign('mensaje', $mensaje);
        
-        $this->smarty->display('templates/visualizacionMateriale.tpl');
+        $this->smarty->display('templates/visualizacionMateriales.tpl');
+    }
+
+    function mostrarMensajeEdicion($material, $tipoAlerta, $mensaje){
+        
+        $this->smarty->assign('base_url', BASE_URL);
+
+        $this->smarty->assign('materiales', $material);
+        $this->smarty->assign('tipoAlerta', $tipoAlerta);
+        $this->smarty->assign('mensaje', $mensaje);
+       
+        $this->smarty->display('templates/editarMaterial.tpl');
     }
 }

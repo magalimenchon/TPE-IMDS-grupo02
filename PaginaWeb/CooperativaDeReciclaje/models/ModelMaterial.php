@@ -38,11 +38,15 @@ class ModelMaterial
     }
 
     //modificación
-    function updateMaterial($id, $nombre, $detalle, $noAceptado, $formaEntrega, $imagenMaterial)
+    function updateMaterial($id, $nombre, $detalle, $noAceptado, $formaEntrega, $imagenMaterial = null)
     {
+      $rutaFoto = null;
+      if ($imagenMaterial) {
+        $rutaFoto = $this->generarRutaImagen($imagenMaterial);
+      }
       $query = $this->db->prepare("UPDATE especificacion_materiales SET nombre_mat=?, detalle=?,
         no_aceptado=?, forma_entrega=?, imagen_material=? WHERE id_especificacion=?");
-      $query->execute(array($nombre, $detalle, $noAceptado, $formaEntrega, $imagenMaterial, $id));
+      $query->execute(array($nombre, $detalle, $noAceptado, $formaEntrega, $rutaFoto, $id));
     }
 
     //Obtener todos los materiales
@@ -52,4 +56,13 @@ class ModelMaterial
       $query->execute();
       return  $query->fetchAll(PDO::FETCH_OBJ);
     }
+
+    function getMaterial($id)
+    {
+      $query = $this->db->prepare('SELECT * FROM especificacion_materiales WHERE id_especificacion=?');
+      $query->execute(array($id));
+      return  $query->fetch(PDO::FETCH_OBJ);
+    }
+
+
 }
