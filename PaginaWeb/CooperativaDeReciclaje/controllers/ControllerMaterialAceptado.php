@@ -36,12 +36,12 @@ class ControllerMaterialAceptado
         ){
             if (empty($imagenMaterial)) { //si no hay imagen
                 $this->modelMaterialAceptado->insertMaterial($nombre, $detalle, $noAceptado, $formaEntrega);
-                $this->viewMaterialesAceptados();
+                $this->viewMaterialAceptado->ShowMaterialesAceptados();
             } else {   //si hay imagen
                 
                 if ($this->formatoImagenValido($_FILES['material_imagen']['type'])) { //checkeo que el formato sea válido
                     $this->modelMaterialAceptado->insertMaterial($nombre, $detalle, $noAceptado, $formaEntrega, $imagenMaterial);
-                    $this->viewMaterialesAceptados();
+                    $this->viewMaterialAceptado->ShowMaterialesAceptados();
                 } else {
                     $this->viewMaterialAceptado->mostrarMensaje($materiales,"danger","Ingrese una imágen con formato jpg o jpeg o png.");
                 }
@@ -62,7 +62,7 @@ class ControllerMaterialAceptado
     function deleteMaterialAceptado($params = null){
         $id_material = $params[":ID"];
         $this->modelMaterialAceptado->deleteMaterial($id_material);
-        $this->viewMaterialesAceptados();
+        $this->viewMaterialAceptado->ShowMaterialesAceptados();
     }
 
     function updateMaterialAceptado(){
@@ -82,19 +82,19 @@ class ControllerMaterialAceptado
         ){
             if (empty($imagenMaterial)) { //si no hay imagen
                 $this->modelMaterialAceptado->updateMaterial($id, $nombre, $detalle, $noAceptado, $formaEntrega);
-                $this->viewMaterialesAceptados();
+                $this->viewMaterialAceptado->ShowMaterialesAceptados();
             } else {   //si hay imagen
                 
                 if ($this->formatoImagenValido($_FILES['material_imagen']['type'])) { //checkeo que el formato sea válido
                     $this->modelMaterialAceptado->updateMaterial($id, $nombre, $detalle, $noAceptado, $formaEntrega, $imagenMaterial);
-                    $this->viewMaterialesAceptados();
+                    $this->viewMaterialAceptado->ShowMaterialesAceptados();
                 } else {
                     $this->viewMaterialAceptado->mostrarMensajeEdicion($material,"danger","Ingrese una imágen con formato jpg o jpeg o png.");
                 }
             }
         } else { $this->viewMaterialAceptado->mostrarMensajeEdicion($material,"danger", "Complete todos los campos."); }
         
-        $this->viewMaterialesAceptados();
+        $this->viewMaterialAceptado->ShowMaterialesAceptados();
     } 
 
     function editarMaterialAceptado($params = null)

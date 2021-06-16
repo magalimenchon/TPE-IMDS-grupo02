@@ -50,4 +50,8 @@ class ViewMaterialAceptado
        
         $this->smarty->display('templates/editarMaterial.tpl');
     }
+
+    function ShowMaterialesAceptados(){
+        header("Location: ".BASE_URL."materialesAceptados");
+    }
 }
