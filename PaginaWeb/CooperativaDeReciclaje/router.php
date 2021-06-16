@@ -21,6 +21,8 @@
     
     $router->addRoute("recoleccion", "GET", "ControllerRecoleccionMaterial", "viewRecoleccion");
     $router->addRoute("recoleccion", "POST", "ControllerRecoleccionMaterial", "recoleccion");
+    $router->addRoute("buscarRecoleccionPorDNI", "POST", "ControllerRecoleccionMaterial", "buscarRecoleccionesPorDNI");
+
 
     $router->addRoute("listadoPedidoRetiro", "GET", "ControllerRetiroMaterial", "viewListaRetiros");
 

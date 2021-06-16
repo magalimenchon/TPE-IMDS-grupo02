@@ -31,4 +31,12 @@ class ViewRecoleccionMaterial
        
         $this->smarty->display('templates/formularioRetiro.tpl');
     }
+
+    function renderResultsRecoleccionPorDNI($filas){
+        $this->smarty->assign('base_url', BASE_URL);
+        $this->smarty->assign('filas', $filas);
+        $this->smarty->display('templates/listadoMaterialesPorCartonero.tpl');
+
+    }
+
 }

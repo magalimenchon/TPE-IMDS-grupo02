@@ -49,4 +49,17 @@ class ControllerRecoleccionMaterial
             }
         }
     }
+
+    function buscarRecoleccionesPorDNI(){
+        $DNI= $_POST['buscarPorDNI'];
+
+        if (isset($DNI) && !empty($DNI)){
+                $filas=$this->modelRecoleccion->getRecoleccionesPorDNI($DNI);
+                //var_dump($filas);
+                //die();
+                $this->viewRecoleccion->renderResultsRecoleccionPorDNI($filas);
+        }
+        
+
+    }
 }

@@ -39,4 +39,11 @@ class ModelRecoleccionMaterial
 
     return  $query->fetch(PDO::FETCH_OBJ);
   }
+
+
+  function getRecoleccionesPorDNI($dni){
+    $sentencia=$this->db->prepare("SELECT * FROM recoleccion_materiales WHERE DNI_cartonero=?");
+    $sentencia->execute(array($dni));
+    return $sentencia->fetchAll(PDO::FETCH_OBJ);
+  }
 }
