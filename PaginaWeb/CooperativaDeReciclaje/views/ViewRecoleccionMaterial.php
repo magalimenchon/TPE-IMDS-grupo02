@@ -11,30 +11,22 @@ class ViewRecoleccionMaterial
         $this->smarty = new Smarty();
     }
 
-    function mostrarFormularioRecoleccion($materiales/*, $cartonero*/)
-    {
-        $this->smarty->assign('base_url', BASE_URL);
-
-        $this->smarty->assign('materiales', $materiales);
-        //$this->smarty->assign('cartonero', $cartonero);
-
-        $this->smarty->display('templates/formularioRecoleccion.tpl');
-    }
-
-    function mostrarMensaje($materiales, $tipoAlerta, $mensaje){
+    function mostrarMensaje($filas, $tipoAlerta, $mensaje){
         
         $this->smarty->assign('base_url', BASE_URL);
 
-        $this->smarty->assign('materiales', $materiales);
+        $this->smarty->assign('filas', $filas);
         $this->smarty->assign('tipoAlerta', $tipoAlerta);
         $this->smarty->assign('mensaje', $mensaje);
-       
-        $this->smarty->display('templates/formularioRetiro.tpl');
+
+        $this->smarty->display('templates/filtroRecoleccion.tpl');
     }
 
-    function renderResultsRecoleccionPorDNI($filas){
+    function renderResultsRecoleccionPorDNI($filas, $materiales, $cartonero){
         $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('filas', $filas);
+        $this->smarty->assign('cartonero', $cartonero);
+        $this->smarty->assign('materiales', $materiales);
 
         $this->smarty->display('templates/listadoMaterialesPorCartonero.tpl');
 
@@ -44,7 +36,7 @@ class ViewRecoleccionMaterial
         $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('filas', $filas);
 
-        $this->smarty->display('templates/formularioRecoleccion.tpl');
+        $this->smarty->display('templates/filtroRecoleccion.tpl');
 
     }
     

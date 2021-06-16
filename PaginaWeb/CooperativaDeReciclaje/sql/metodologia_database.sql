@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2021 a las 21:31:12
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 7.3.28
+-- Tiempo de generación: 16-06-2021 a las 22:44:23
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -73,7 +73,7 @@ CREATE TABLE `oferta_transporte` (
 CREATE TABLE `recoleccion_materiales` (
   `id_recoleccion` int(11) NOT NULL,
   `peso_material_recolectado` int(11) NOT NULL,
-  `fecha_recoleccion` date NOT NULL DEFAULT current_timestamp(),
+  `fecha_recoleccion` date NOT NULL,
   `id_especificacion_material` int(11) NOT NULL,
   `DNI_cartonero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -162,7 +162,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `especificacion_materiales`
 --
 ALTER TABLE `especificacion_materiales`
-  MODIFY `id_especificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_especificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `oferta_transporte`
@@ -174,19 +174,19 @@ ALTER TABLE `oferta_transporte`
 -- AUTO_INCREMENT de la tabla `recoleccion_materiales`
 --
 ALTER TABLE `recoleccion_materiales`
-  MODIFY `id_recoleccion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_recoleccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `retiro_materiales`
 --
 ALTER TABLE `retiro_materiales`
-  MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- Restricciones para tablas volcadas

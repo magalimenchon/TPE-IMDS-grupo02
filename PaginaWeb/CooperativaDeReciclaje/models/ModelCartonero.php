@@ -33,4 +33,12 @@ class ModelCartonero
         direccion_cartonero=?, fecha_nac_cartonero=?, categoria=? WHERE DNI_cartonero=?");
       $query->execute(array($nombre, $apellido, $direccion, $fecha_nac, $categoria, $id));
     }
+
+    //obtener cartonero por ID
+    function getCartonero($id)
+    {
+      $query = $this->db->prepare('SELECT * FROM cartonero WHERE DNI_cartonero=?');
+      $query->execute(array($id));
+      return  $query->fetch(PDO::FETCH_OBJ);
+    }
 }

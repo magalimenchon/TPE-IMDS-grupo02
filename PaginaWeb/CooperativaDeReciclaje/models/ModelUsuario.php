@@ -1,6 +1,6 @@
 <?php
 
-class ModelSession
+class ModelUsuario
 {
   private $db;
 

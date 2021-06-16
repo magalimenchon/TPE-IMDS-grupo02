@@ -3,20 +3,20 @@
 require_once './models/ModelRetiroMaterial.php';
 require_once './views/ViewRetiroMaterial.php';
 
-require_once './models/ModelSession.php';
+require_once './models/ModelUsuario.php';
 
 class ControllerRetiroMaterial
 {
 
     private $viewRetiro;
     private $modelRetiro;
-    private $modelUser;
+    private $modelUsuario;
 
     function __construct()
     {
         $this->viewRetiro = new ViewRetiroMaterial();
         $this->modelRetiro = new ModelRetiroMaterial();
-        $this->modelUser = new ModelSession();
+        $this->modelUsuario = new ModelUsuario();
     }
 
     function viewRetiro()
@@ -55,8 +55,8 @@ class ControllerRetiroMaterial
             $finHorario = $horario[1];
            
             //obtengo usuario
-            $usuario = $this->modelUser->getIdUser($nombre, $apellido, $direccion);
-            if ($usuario) { //si existe el user
+            $usuario = $this->modelUsuario->getIdUser($nombre, $apellido, $direccion);
+            if ($usuario) { //si existe el usuario
                 //traer solicitud
                 $solicitud = $this->modelRetiro->getIdSolicitud($categoria, $inicioHorario, $finHorario, $usuario->id_usuario);
                 if ($solicitud) { //si existe solicitud
@@ -66,7 +66,7 @@ class ControllerRetiroMaterial
                     $this->viewRetiro->mostrarMensaje("success","La solicitud ha sido enviada. Recibirá su confirmación vía mail.");
                 }
             } else {
-                $usuario = $this->modelUser->insertUsuario($nombre, $apellido, $telefono, $direccion);
+                $usuario = $this->modelUsuario->insertUsuario($nombre, $apellido, $telefono, $direccion);
                 $this->insertarRetiro($categoria, $inicioHorario, $finHorario, $usuario, $tmp_imagen);
                 $this->viewRetiro->mostrarMensaje("success","La solicitud ha sido enviada. Recibirá su confirmación vía mail.");
             }
