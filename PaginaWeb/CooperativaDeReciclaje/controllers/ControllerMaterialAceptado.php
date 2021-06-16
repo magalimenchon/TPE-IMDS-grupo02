@@ -11,7 +11,7 @@ class ControllerMaterialAceptado
     function __construct()
     {
         $this->viewMaterialAceptado = new ViewMaterialAceptado();
-        $this->modelMaterialAceptado = new modelMaterial();
+        $this->modelMaterialAceptado = new ModelMaterial();
     }
 
     function viewMaterialesAceptados()

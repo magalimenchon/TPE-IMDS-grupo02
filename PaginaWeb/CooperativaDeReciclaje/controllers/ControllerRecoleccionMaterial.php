@@ -2,6 +2,7 @@
 
 require_once './models/ModelRecoleccionMaterial.php';
 require_once './views/ViewRecoleccionMaterial.php';
+require_once './models/ModelMaterial.php';
 
 class ControllerRecoleccionMaterial
 {
@@ -19,8 +20,9 @@ class ControllerRecoleccionMaterial
 
     function viewRecoleccion()
     {
-        $materiales = $this->modelMaterial->getMateriales();
-        $this->viewRecoleccion->mostrarFormularioRecoleccion($materiales/*, $cartonero*/);
+        //$materiales = $this->modelMaterial->getMateriales();
+        //$this->viewRecoleccion->mostrarFormularioRecoleccion($materiales/*, $cartonero*/);
+
     }
 
     //alta
@@ -59,7 +61,14 @@ class ControllerRecoleccionMaterial
                 //die();
                 $this->viewRecoleccion->renderResultsRecoleccionPorDNI($filas);
         }
-        
-
     }
+
+    function buscarRecolecciones(){
+
+        $materiales=$this->modelRecoleccion->getRecoleccionesMateriales();
+        //var_dump($materiales);
+        //die();
+        $this->viewRecoleccion->renderResultsRecoleccion($materiales);
+        
+   }
 }

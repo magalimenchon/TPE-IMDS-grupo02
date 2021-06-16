@@ -19,8 +19,8 @@
 
     //---- SPRINT 2 ----
     
-    $router->addRoute("recoleccion", "GET", "ControllerRecoleccionMaterial", "viewRecoleccion");
-    $router->addRoute("recoleccion", "POST", "ControllerRecoleccionMaterial", "recoleccion");
+    $router->addRoute("recoleccion", "GET", "ControllerRecoleccionMaterial", "buscarRecolecciones");
+    //$router->addRoute("recoleccion", "POST", "ControllerRecoleccionMaterial", "recoleccion");
     $router->addRoute("buscarRecoleccionPorDNI", "POST", "ControllerRecoleccionMaterial", "buscarRecoleccionesPorDNI");
 
 
