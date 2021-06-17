@@ -68,7 +68,6 @@ class ControllerRetiroMaterial
             } else {
                 $usuario = $this->modelUsuario->insertUsuario($nombre, $apellido, $telefono, $direccion);
                 $this->insertarRetiro($categoria, $inicioHorario, $finHorario, $usuario, $tmp_imagen);
-                $this->viewRetiro->mostrarMensaje("success","La solicitud ha sido enviada. Recibirá su confirmación vía mail.");
             }
         } else  $this->viewRetiro->mostrarMensaje("danger","Complete todos los campos.");
     }
@@ -83,6 +82,7 @@ class ControllerRetiroMaterial
             
             if ($this->formatoImagenValido($_FILES['imageToUpload']['type'])) { //checkeo que el formato sea válido
                 $this->modelRetiro->insertRetiro($categoria, $inicioHorario, $finHorario, $usuario, $tmp_imagen);
+                $this->viewRetiro->mostrarMensaje("success","La solicitud ha sido enviada. Recibirá su confirmación vía mail.");
             }
             else{
                 $this->viewRetiro->mostrarMensaje("danger","Ingrese una imágen con formato jpg o jpeg o png.");

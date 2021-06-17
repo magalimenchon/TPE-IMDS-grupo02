@@ -44,7 +44,7 @@
         {foreach $filas as $fila} 
                 <tr>
                     <td>{$fila->fecha_recoleccion}</td>
-                    <td>{$fila->nombre_mat}</td>
+                    <td>{$fila->id_especificacion_material}</td>
                     <td>{$fila->peso_material_recolectado}</td>
                 </tr>
         {/foreach}

@@ -11,7 +11,7 @@
     <select name="input_recoleccion_id_especificacion_material_fk" id="materiales_s" required>
         <option value="" selected></option>
         {foreach from=$materiales item=material}
-        <option value="{$material->id_especificacion}">{$material->nombre_mat}</option>
+        <option value="{$material->nombre_mat}">{$material->nombre_mat}</option>
         {/foreach}
     </select>
     </div>

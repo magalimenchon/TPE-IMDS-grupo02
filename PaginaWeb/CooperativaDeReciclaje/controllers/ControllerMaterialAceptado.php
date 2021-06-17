@@ -66,9 +66,10 @@ class ControllerMaterialAceptado
     }
 
     function updateMaterialAceptado(){
-        
+
         $id = $_POST['material_id'];
         $material = $this->modelMaterialAceptado->getMaterial($id);
+        $materiales = $this->modelMaterialAceptado->getMateriales();
         $nombre = $_POST['material_nombre'];
         $detalle = $_POST['material_detalle'];
         $noAceptado = $_POST['material_noAceptado'];
@@ -89,12 +90,13 @@ class ControllerMaterialAceptado
                     $this->modelMaterialAceptado->updateMaterial($id, $nombre, $detalle, $noAceptado, $formaEntrega, $imagenMaterial);
                     $this->viewMaterialAceptado->ShowMaterialesAceptados();
                 } else {
-                    $this->viewMaterialAceptado->mostrarMensajeEdicion($material,"danger","Ingrese una imágen con formato jpg o jpeg o png.");
+                    $this->viewMaterialAceptado->mostrarMensajeEdicion($materiales, $material, "danger","Ingrese una imágen con formato jpg o jpeg o png.");
                 }
             }
-        } else { $this->viewMaterialAceptado->mostrarMensajeEdicion($material,"danger", "Complete todos los campos."); }
-        
-        $this->viewMaterialAceptado->ShowMaterialesAceptados();
+        } else {
+            $materiales = $this->modelMaterialAceptado->getMateriales(); 
+            $this->viewMaterialAceptado->mostrarMensajeEdicion($materiales, $material,"danger", "Complete todos los campos."); 
+        }
     } 
 
     function editarMaterialAceptado($params = null)

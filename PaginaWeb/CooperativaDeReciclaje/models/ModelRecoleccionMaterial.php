@@ -42,19 +42,15 @@ class ModelRecoleccionMaterial
 
 
   function getRecoleccionesPorDNI($dni){
-    $sentencia=$this->db->prepare("SELECT * FROM recoleccion_materiales join 
-                        especificacion_materiales ON (id_especificacion_material = id_especificacion) WHERE DNI_cartonero=?");
+    $sentencia=$this->db->prepare("SELECT * FROM recoleccion_materiales WHERE DNI_cartonero=?");
     $sentencia->execute(array($dni));
     
     return $sentencia->fetchAll(PDO::FETCH_OBJ);
   }
 
   function getRecoleccionesMateriales(){
-    $sentencia=$this->db->prepare("SELECT * FROM recoleccion_materiales join 
-                        especificacion_materiales ON (id_especificacion_material = id_especificacion)");
+    $sentencia=$this->db->prepare("SELECT * FROM recoleccion_materiales");
     $sentencia->execute();
-    //var_dump($sentencia);
-    //die();
     return $sentencia->fetchAll(PDO::FETCH_OBJ);
   }
 }
