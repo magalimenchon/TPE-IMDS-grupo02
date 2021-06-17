@@ -8,8 +8,8 @@
                 <th scope="col">Categoria</th>
                 <th scope="col">Inicio del Horario de Retiro</th>
                 <th scope="col">Finalización de Horario de Retiro</th>
-                <th scope="col">DNI del Cartonero</th>
-                <th scope="col">Usuario</th>
+                <!--<th scope="col">DNI del Cartonero</th>
+                <th scope="col">Usuario</th>-->
                 <th scope="col">Imagen</th>
                 </tr>
             </thead>
@@ -27,8 +27,8 @@
                         {/if}
                         <td>{$pedido->inicio_horario_retiro}</td>
                         <td>{$pedido->fin_horario_retiro}</td>
-                        <td>{$pedido->DNI_cartonero}</td>
-                        <td>{$pedido->id_usuario}</td>
+                        <!--<td>{$pedido->DNI_cartonero}</td>
+                        <td>{$pedido->id_usuario}</td>-->
                         {if $pedido->foto!==null}
                         <td><img style="width: 200px; height: 200px;" src="{$pedido->foto}"></td>
                         {/if}

@@ -21,23 +21,24 @@
         <form action="modificar_material" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label class="form-label">Nombre material</label>
-                <input type="text" class="form-control" name="material_nombre" placeholder="{$material->nombre_mat}" required>
+                <input type="text" class="form-control" name="material_nombre" value="{$material->nombre_mat}" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Detalle</label>
-                <textarea type="text" class="form-control" name="material_detalle" rows="3" placeholder="{$material->detalle}" required></textarea>
+                <textarea type="text" class="form-control" name="material_detalle" rows="3" required>{$material->detalle}</textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Forma de entrega</label>
-                <textarea type="text" class="form-control" name="material_formaEntrega" rows="3" placeholder="{$material->forma_entrega}" required></textarea>
+                <textarea type="text" class="form-control" name="material_formaEntrega" rows="3" required>{$material->forma_entrega}</textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Como no se acepta</label>
-                <textarea type="text" class="form-control" name="material_noAceptado" rows="3" placeholder="{$material->no_aceptado}" required></textarea>
+                <textarea type="text" class="form-control" name="material_noAceptado" rows="3" required>{$material->no_aceptado}</textarea>
             </div>
             <div class="mb-3">
-                    <input type="file" name="material_imagen" id="imageToUpload">
-                </div>
+                <img style="max-width: 200px; max-height: 200px;" src="{$material->imagen_material}">
+                <input type="file" name="material_imagen" id="imageToUpload">
+            </div>
             <div class="col text-center">
                 <button value="{$material->id_especificacion}" name="material_id" type="submit" class="btn btn-lg btn-success">Editar</button>
             </div>

@@ -5,8 +5,20 @@
    
         <h2>¿Qué podemos reciclar?</h2>
         {include file="mensaje.tpl"}
-        {foreach from=$materiales item=material}
+        
         <table class="table mb-3">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Detalle</th>
+                    <th scope="col">Forma de entrega</th>
+                    <th scope="col">No aceptamos</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
+                </tr>
+            </thead>
+            {foreach from=$materiales item=material}
             <tbody>
             <tr class="table-warning">
                 <th scope="row">{$material->nombre_mat}</th>
@@ -18,8 +30,8 @@
                 <td><a type="button" href="borrar_material/{$material->id_especificacion}" class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
             </tbody>
+            {/foreach}
         </table>
-        {/foreach}
 
         <form action="material_aceptado" method="post" enctype="multipart/form-data">
             <div class="mb-3">
