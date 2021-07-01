@@ -47,4 +47,15 @@ class ModelUsuario
 
     return  $query->fetch(PDO::FETCH_OBJ);
   }
+
+  function getUsuario($email)
+  {
+    $query = $this->db->prepare('SELECT *
+                                 FROM usuario 
+                                 WHERE mail_usuario=?');
+
+    $query->execute(array($email));
+
+    return  $query->fetch(PDO::FETCH_OBJ);
+  }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2021 a las 02:35:48
+-- Tiempo de generación: 02-07-2021 a las 00:36:49
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -64,7 +64,7 @@ CREATE TABLE `especificacion_materiales` (
 --
 
 INSERT INTO `especificacion_materiales` (`id_especificacion`, `nombre_mat`, `detalle`, `no_aceptado`, `forma_entrega`, `imagen_material`) VALUES
-(7, 'Papel', 'asdf', 'asdf', 'asdf', 'img/temp/60ca964f4984c.jpg');
+(11, 'Papel', 'dfgdf', 'dgfdgf', 'gdfgdfg', 'img/temp/60cb7bde09e72.jpg');
 
 -- --------------------------------------------------------
 
@@ -117,13 +117,6 @@ CREATE TABLE `retiro_materiales` (
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `retiro_materiales`
---
-
-INSERT INTO `retiro_materiales` (`id_retiro`, `foto`, `categoria`, `inicio_horario_retiro`, `fin_horario_retiro`, `DNI_cartonero`, `id_usuario`) VALUES
-(79, 'img/temp/60ca89c7ba11c.jpg', 'a', '09:00:00', '12:00:00', NULL, 76);
-
 -- --------------------------------------------------------
 
 --
@@ -136,17 +129,16 @@ CREATE TABLE `usuario` (
   `apellido_usuario` varchar(50) NOT NULL,
   `telefono_usuario` int(11) NOT NULL,
   `direccion_usuario` varchar(50) NOT NULL,
-  `mail_usuario` varchar(70) DEFAULT NULL
+  `mail_usuario` varchar(70) DEFAULT NULL,
+  `password` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `telefono_usuario`, `direccion_usuario`, `mail_usuario`) VALUES
-(76, 'Laura', 'Romero', 1544968, '40 N°55', NULL),
-(77, 'dfsdf', 'dfsgsd', 0, 'sdfgsdf', NULL),
-(78, 'asdf', 'asdf', 0, 'asdf', NULL);
+INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `telefono_usuario`, `direccion_usuario`, `mail_usuario`, `password`) VALUES
+(81, 'Admin', 'Admin', 11111111, 'Direccion admin', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b');
 
 --
 -- Índices para tablas volcadas
@@ -200,7 +192,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `especificacion_materiales`
 --
 ALTER TABLE `especificacion_materiales`
-  MODIFY `id_especificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_especificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `oferta_transporte`
@@ -218,13 +210,13 @@ ALTER TABLE `recoleccion_materiales`
 -- AUTO_INCREMENT de la tabla `retiro_materiales`
 --
 ALTER TABLE `retiro_materiales`
-  MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- Restricciones para tablas volcadas

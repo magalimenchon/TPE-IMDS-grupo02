@@ -33,6 +33,11 @@
     $router->addRoute("borrar_material/:ID", "GET", "ControllerMaterialAceptado", "deleteMaterialAceptado");
     //--------
 
+    //---- SPRINT 3 ----
+    $router->addRoute("login", "GET", "ControllerSession", "viewLogin");
+    $router->addRoute("verificarUsuario", "POST", "ControllerSession", "verificarUsuario");
+    //--------
+
     $router->setDefaultRoute("Controller", "viewHome");
 
     $router->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
