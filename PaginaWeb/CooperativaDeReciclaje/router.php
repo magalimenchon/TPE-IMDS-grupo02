@@ -3,6 +3,7 @@
     require_once 'controllers/ControllerMaterialAceptado.php';
     require_once 'controllers/ControllerRetiroMaterial.php';
     require_once 'controllers/ControllerRecoleccionMaterial.php';
+    require_once 'controllers/ControllerSession.php';
     require_once 'routerclass.php';
     
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
