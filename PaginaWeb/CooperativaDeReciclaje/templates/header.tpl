@@ -29,6 +29,7 @@
             {/if}
             {if $logged eq false}
                 <li class="nav-item"><a class="link nav-link active" aria-current="page" href="login">Iniciar Sesión</a></li>
+                <li class="nav-item"><a class="link nav-link active" aria-current="page" href="formularioAltaCartonero">Añadir cartonero</a></li>
             {/if}
             {if $logged}
             <li>

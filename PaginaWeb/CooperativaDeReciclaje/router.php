@@ -1,5 +1,6 @@
 <?php
     require_once 'controllers/Controller.php';
+    require_once 'controllers/ControllerCartonero.php';
     require_once 'controllers/ControllerMaterialAceptado.php';
     require_once 'controllers/ControllerRetiroMaterial.php';
     require_once 'controllers/ControllerRecoleccionMaterial.php';
@@ -37,6 +38,8 @@
     $router->addRoute("login", "GET", "ControllerSession", "viewLogin");
     $router->addRoute("verificarUsuario", "POST", "ControllerSession", "verificarUsuario");
     $router->addRoute("logout", "GET", "ControllerSession", "logout");
+
+    $router->addRoute("formularioAltaCartonero", "GET", "ControllerCartonero", "viewFormulario");
     //--------
 
     $router->setDefaultRoute("Controller", "viewHome");
