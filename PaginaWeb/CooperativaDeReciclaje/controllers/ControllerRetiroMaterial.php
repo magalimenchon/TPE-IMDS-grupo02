@@ -2,37 +2,42 @@
 
 require_once './models/ModelRetiroMaterial.php';
 require_once './views/ViewRetiroMaterial.php';
-
 require_once './models/ModelUsuario.php';
+require_once 'helper.php';
 
-class ControllerRetiroMaterial
-{
+class ControllerRetiroMaterial {
 
     private $viewRetiro;
     private $modelRetiro;
     private $modelUsuario;
+    private $helper;
 
-    function __construct()
-    {
+    function __construct() {
         $this->viewRetiro = new ViewRetiroMaterial();
         $this->modelRetiro = new ModelRetiroMaterial();
         $this->modelUsuario = new ModelUsuario();
+        $this->helper = new Helper();
     }
 
-    function viewRetiro()
-    {
-        $this->viewRetiro->mostrarFormularioRetiro();
+    function viewRetiro() {
+        $logged = $this->helper->checkLoggedIn();
+        $this->viewRetiro->mostrarFormularioRetiro($logged);
     }
 
-    function viewListaRetiros()
-    {
-        $pedidos=$this->modelRetiro->getPedidosRetiro();
-        $this->viewRetiro->mostrarListadoPedidosRetiro($pedidos);
+    function viewListaRetiros() {
+        $logged = $this->helper->checkLoggedIn();
+        if($logged){
+            $pedidos=$this->modelRetiro->getPedidosRetiro();
+            $this->viewRetiro->mostrarListadoPedidosRetiro($pedidos, $logged);
+        } else {
+            $this->viewRetiro->homeLocation();
+        }
     }
 
     //alta
-    function retiro()
-    {
+    function retiro() {
+        $logged = $this->helper->checkLoggedIn();
+
         $nombre = $_POST['input_retiro_nombre_fk'];
         $apellido = $_POST['input_retiro_apellido_fk'];
         $direccion = $_POST['input_retiro_direccion_fk'];
@@ -60,32 +65,33 @@ class ControllerRetiroMaterial
                 //traer solicitud
                 $solicitud = $this->modelRetiro->getIdSolicitud($categoria, $inicioHorario, $finHorario, $usuario->id_usuario);
                 if ($solicitud) { //si existe solicitud
-                    $this->viewRetiro->mostrarMensaje("danger","Ya ha solicitado el retiro.");
+                    $this->viewRetiro->mostrarMensaje("danger","Ya ha solicitado el retiro.", $logged);
                 } else {   //si no existe solicitud en la base de datos
-                    $this->insertarRetiro($categoria, $inicioHorario, $finHorario, $usuario->id_usuario, $tmp_imagen);
-                    $this->viewRetiro->mostrarMensaje("success","La solicitud ha sido enviada. Recibirá su confirmación vía mail.");
+                    $this->insertarRetiro($categoria, $inicioHorario, $finHorario, $usuario->id_usuario, $tmp_imagen, $logged);
+                    $this->viewRetiro->mostrarMensaje("success","La solicitud ha sido enviada. Recibirá su confirmación vía mail.", $logged);
                 }
             } else {
                 $usuario = $this->modelUsuario->insertUsuario($nombre, $apellido, $telefono, $direccion);
-                $this->insertarRetiro($categoria, $inicioHorario, $finHorario, $usuario, $tmp_imagen);
+                $this->insertarRetiro($categoria, $inicioHorario, $finHorario, $usuario, $tmp_imagen, $logged);
             }
-        } else  $this->viewRetiro->mostrarMensaje("danger","Complete todos los campos.");
+        } else  {
+            $this->viewRetiro->mostrarMensaje("danger","Complete todos los campos.", $logged);
+        }
     }
 
     //Insertar retiro con/sin imagen
-    private function insertarRetiro($categoria, $inicioHorario, $finHorario, $usuario, $tmp_imagen)
-    {
-
+    private function insertarRetiro($categoria, $inicioHorario, $finHorario, $usuario, $tmp_imagen, $logged) {
         if (empty($tmp_imagen)) { //si no hay imagen
             $this->modelRetiro->insertRetiro($categoria, $inicioHorario, $finHorario, $usuario);
+            $this->viewRetiro->mostrarMensaje("success","La solicitud ha sido enviada. Recibirá su confirmación vía mail.", $logged);
         } else {   //si hay imagen
             
             if ($this->formatoImagenValido($_FILES['imageToUpload']['type'])) { //checkeo que el formato sea válido
                 $this->modelRetiro->insertRetiro($categoria, $inicioHorario, $finHorario, $usuario, $tmp_imagen);
-                $this->viewRetiro->mostrarMensaje("success","La solicitud ha sido enviada. Recibirá su confirmación vía mail.");
+                $this->viewRetiro->mostrarMensaje("success","La solicitud ha sido enviada. Recibirá su confirmación vía mail.", $logged);
             }
             else{
-                $this->viewRetiro->mostrarMensaje("danger","Ingrese una imágen con formato jpg o jpeg o png.");
+                $this->viewRetiro->mostrarMensaje("danger","Ingrese una imágen con formato jpg o jpeg o png.", $logged);
             }
         }
     }

@@ -1,23 +1,24 @@
 <?php
 require_once './models/ModelUsuario.php';
-
 require_once './views/ViewSession.php';
+require_once 'helper.php';
 
 class ControllerSession
 {
 
     private $viewSession;
     private $modelSession;
+    private $helper;
 
-    function __construct()
-    {
+    function __construct() {
         $this->viewSession = new ViewSession();
         $this->modelSession = new ModelUsuario();
+        $this->helper = new Helper();
     }
 
-    function viewLogin()
-    {
-        $this->viewSession->mostrarFormularioLogin();
+    function viewLogin() {
+        $logged = $this->helper->checkLoggedIn();
+        $this->viewSession->mostrarFormularioLogin($logged);
     }
 
     function verificarUsuario()
@@ -50,5 +51,11 @@ class ControllerSession
                 $this->viewSession->mostrarMensaje("danger", "El email ingresado no esta registrado. Por favor intente nuevamente");
             }
         }
+    }
+
+    function logout(){
+        session_start();
+        session_destroy();
+        $this->viewSession->homeLocation('home');
     }
 }

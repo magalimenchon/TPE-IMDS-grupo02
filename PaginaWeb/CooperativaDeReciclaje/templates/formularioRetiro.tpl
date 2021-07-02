@@ -25,7 +25,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Teléfono</label>
-                    <input type="tel" class="form-control" name="input_retiro_telefono_fk" placeholder="Teléfono" required>
+                    <input type="number" class="form-control" name="input_retiro_telefono_fk" placeholder="Teléfono" required>
                 </div>
                 <div class="mb-3">
                     <label for="title">Categoria de volumen</label>

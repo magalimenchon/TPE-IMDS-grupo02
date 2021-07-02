@@ -16,6 +16,7 @@
             <li class="nav-item"><a class="link nav-link active" aria-current="page" href="home"> Home</a></li>
             <li class="nav-item"><a class="link nav-link active" aria-current="page" href="retiro">Solicitar retiro</a></li>
             <li class="nav-item"><a class="link nav-link active" aria-current="page" href="materialesAceptados">Materiales</a></li>
+            {if $logged}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Modificaciones
@@ -24,8 +25,16 @@
                     <a class="dropdown-item" style="background-color: rgba(50, 168, 21, 0.733);" href="recoleccion">Recolección de materiales</a>
                     <a class="dropdown-item" style="background-color: rgba(50, 168, 21, 0.733);" href="listadoPedidoRetiro">Pedidos de retiro</a>
                 </div>
+            </li>     
+            {/if}
+            {if $logged eq false}
+                <li class="nav-item"><a class="link nav-link active" aria-current="page" href="login">Iniciar Sesión</a></li>
+            {/if}
+            {if $logged}
+            <li>
+                <button class="btn btn-lg" type="button"><a href="logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a></button>
             </li>
-            <li class="nav-item"><a class="link nav-link active" aria-current="page" href="login">Iniciar Sesión</a></li>
+            {/if}
         </ul>
     </nav>
 </header>

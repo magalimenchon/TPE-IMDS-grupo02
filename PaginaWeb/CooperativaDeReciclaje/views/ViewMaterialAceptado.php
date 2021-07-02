@@ -11,36 +11,36 @@ class ViewMaterialAceptado
         $this->smarty = new Smarty();
     }
 
-    function mostrarMaterialesAceptados($materiales)
-    {
+    function mostrarMaterialesAceptados($materiales, $logged) {
         $this->smarty->assign('base_url', BASE_URL);
-
         $this->smarty->assign('materiales', $materiales);
+        $this->smarty->assign('logged', $logged);
 
         $this->smarty->display('templates/visualizacionMateriales.tpl');
     }
 
-    function mostrarEdicionMaterial($material)
-    {
+    function mostrarEdicionMaterial($material, $logged) {
         $this->smarty->assign('base_url', BASE_URL);
 
         $this->smarty->assign('material', $material);
+        $this->smarty->assign('logged', $logged);
 
         $this->smarty->display('templates/editarMaterial.tpl');
     }
 
-    function mostrarMensaje($materiales, $tipoAlerta, $mensaje){
+    function mostrarMensaje($materiales, $tipoAlerta, $mensaje, $logged){
         
         $this->smarty->assign('base_url', BASE_URL);
 
         $this->smarty->assign('materiales', $materiales);
         $this->smarty->assign('tipoAlerta', $tipoAlerta);
         $this->smarty->assign('mensaje', $mensaje);
-       
+        $this->smarty->assign('logged', $logged);
+
         $this->smarty->display('templates/visualizacionMateriales.tpl');
     }
 
-    function mostrarMensajeEdicion($materiales, $material, $tipoAlerta, $mensaje){
+    function mostrarMensajeEdicion($materiales, $material, $tipoAlerta, $mensaje, $logged){
         
         $this->smarty->assign('base_url', BASE_URL);
 
@@ -48,6 +48,7 @@ class ViewMaterialAceptado
         $this->smarty->assign('materiales', $materiales);
         $this->smarty->assign('tipoAlerta', $tipoAlerta);
         $this->smarty->assign('mensaje', $mensaje);
+        $this->smarty->assign('logged', $logged);
        
         $this->smarty->display('templates/editarMaterial.tpl');
     }

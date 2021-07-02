@@ -36,6 +36,7 @@
     //---- SPRINT 3 ----
     $router->addRoute("login", "GET", "ControllerSession", "viewLogin");
     $router->addRoute("verificarUsuario", "POST", "ControllerSession", "verificarUsuario");
+    $router->addRoute("logout", "GET", "ControllerSession", "logout");
     //--------
 
     $router->setDefaultRoute("Controller", "viewHome");

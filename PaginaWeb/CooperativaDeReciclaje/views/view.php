@@ -1,5 +1,6 @@
 <?php
-    require_once './smarty/libs/Smarty.class.php';
+require_once './smarty/libs/Smarty.class.php';
+
 class View{
     private $titulo;
     private $smarty;
@@ -8,18 +9,18 @@ class View{
         $this->smarty = new Smarty();
     }
 
-    function mostrarHome(){
-
+    function mostrarHome($logged){
         $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('titulo', $this->titulo);
+        $this->smarty->assign('logged', $logged);
 
         $this->smarty->display('templates/home.tpl');
     }
 
-    function mostrarMateriales(){
-
+    function mostrarMateriales($logged){
         $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('titulo', $this->titulo);
+        $this->smarty->assign('logged', $logged);
 
         $this->smarty->display('templates/materiales.tpl');
     }

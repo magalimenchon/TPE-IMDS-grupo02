@@ -9,9 +9,10 @@ class ViewSession{
         $this->smarty = new Smarty();
     }
 
-    function mostrarFormularioLogin()
+    function mostrarFormularioLogin($logged)
     {
         $this->smarty->assign('base_url', BASE_URL);
+        $this->smarty->assign('logged', $logged);
 
         $this->smarty->display('templates/formularioLogin.tpl');
     }
