@@ -53,4 +53,8 @@ class ModelRecoleccionMaterial
     $sentencia->execute();
     return $sentencia->fetchAll(PDO::FETCH_OBJ);
   }
+
+  function getMaterialesPorCartonero(){
+    
+  }
 }

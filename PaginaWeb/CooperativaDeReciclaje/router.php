@@ -40,6 +40,7 @@
     $router->addRoute("logout", "GET", "ControllerSession", "logout");
 
     $router->addRoute("formularioAltaCartonero", "GET", "ControllerCartonero", "viewFormulario");
+    $router->addRoute("materiales_acopiados", "GET", "ControllerRecoleccionMaterial", "viewMaterialesAcopiados");
     //--------
 
     $router->setDefaultRoute("Controller", "viewHome");

@@ -24,6 +24,7 @@
                 <div class="dropdown-menu" >
                     <a class="dropdown-item" style="background-color: rgba(50, 168, 21, 0.733);" href="recoleccion">Recolección de materiales</a>
                     <a class="dropdown-item" style="background-color: rgba(50, 168, 21, 0.733);" href="listadoPedidoRetiro">Pedidos de retiro</a>
+                    <a class="dropdown-item" style="background-color: rgba(50, 168, 21, 0.733);" href="materiales_acopiados">Materiales acopiados</a>
                 </div>
             </li>     
             {/if}

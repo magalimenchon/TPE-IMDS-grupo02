@@ -89,4 +89,14 @@ class ControllerRecoleccionMaterial {
             $this->viewRecoleccion->homeLocation();
         }
     }
+
+    function viewMaterialesAcopiados(){
+        $logged = $this->helper->checkLoggedIn();
+        if($logged){
+            $materiales = $this->modelRecoleccion->getMaterialesPorCartonero();
+            $this->viewRecoleccion->renderMaterialesPorCartonero($materiales, $logged);
+        } else {
+            $this->viewRecoleccion->homeLocation();
+        }
+    }
 }
