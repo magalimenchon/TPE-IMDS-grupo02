@@ -27,4 +27,16 @@ class ControllerCartonero {
             $this-> helper->showLoggin($check);
         }
     }
+    
+    function viewCartoneros(){
+        $check=$this->helper-> checkLoggedIn();
+        
+        if($check == true){
+            $cartonteros = $this-> modelCartonero-> getCartoneros();
+            $this-> viewCartonero-> showCartoneros($check, $cartonteros);
+        }
+        else{
+            $this-> helper->showLoggin($check);
+        }
+    }
 }

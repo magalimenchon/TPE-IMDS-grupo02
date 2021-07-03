@@ -27,7 +27,7 @@ class ControllerRecoleccionMaterial {
         $logged = $this->helper->checkLoggedIn();
         if($logged){
             $cartonero = $_POST['input_recoleccion_dni_cartonero_fk'];
-            $material = $_POST['input_recoleccion_id_especificacion_material_fk'];
+            $material = $_POST['input_recoleccion_material'];
             $peso = $_POST['input_recoleccion_peso'];
             $fecha = $_POST['input_recoleccion_fecha'];
 

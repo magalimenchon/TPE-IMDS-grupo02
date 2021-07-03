@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-07-2021 a las 00:36:49
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.7
+-- Tiempo de generación: 03-07-2021 a las 20:49:28
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -89,7 +89,7 @@ CREATE TABLE `recoleccion_materiales` (
   `id_recoleccion` int(11) NOT NULL,
   `peso_material_recolectado` int(11) NOT NULL,
   `fecha_recoleccion` date NOT NULL,
-  `id_especificacion_material` varchar(250) NOT NULL,
+  `material_recolectado` varchar(250) NOT NULL,
   `DNI_cartonero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -97,9 +97,10 @@ CREATE TABLE `recoleccion_materiales` (
 -- Volcado de datos para la tabla `recoleccion_materiales`
 --
 
-INSERT INTO `recoleccion_materiales` (`id_recoleccion`, `peso_material_recolectado`, `fecha_recoleccion`, `id_especificacion_material`, `DNI_cartonero`) VALUES
+INSERT INTO `recoleccion_materiales` (`id_recoleccion`, `peso_material_recolectado`, `fecha_recoleccion`, `material_recolectado`, `DNI_cartonero`) VALUES
 (19, 500, '2001-02-25', '0', 1),
-(20, 500, '2000-05-05', 'Papel', 1);
+(20, 500, '2000-05-05', 'Papel', 1),
+(21, 1, '1111-11-11', 'Papel', 1);
 
 -- --------------------------------------------------------
 
@@ -117,6 +118,13 @@ CREATE TABLE `retiro_materiales` (
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `retiro_materiales`
+--
+
+INSERT INTO `retiro_materiales` (`id_retiro`, `foto`, `categoria`, `inicio_horario_retiro`, `fin_horario_retiro`, `DNI_cartonero`, `id_usuario`) VALUES
+(82, NULL, 'a', '09:00:00', '12:00:00', NULL, 82);
+
 -- --------------------------------------------------------
 
 --
@@ -127,7 +135,7 @@ CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `nombre_usuario` varchar(50) NOT NULL,
   `apellido_usuario` varchar(50) NOT NULL,
-  `telefono_usuario` int(11) NOT NULL,
+  `telefono_usuario` bigint(11) NOT NULL,
   `direccion_usuario` varchar(50) NOT NULL,
   `mail_usuario` varchar(70) DEFAULT NULL,
   `password` varchar(250) DEFAULT NULL
@@ -138,7 +146,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `telefono_usuario`, `direccion_usuario`, `mail_usuario`, `password`) VALUES
-(81, 'Admin', 'Admin', 11111111, 'Direccion admin', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b');
+(81, 'Admin', 'Admin', 11111111, 'Direccion admin', 'admin@gmail.com', '$2y$10$.3oB9H9hrxOsrYOMfKOblOyckXpExiqnqtrzlVU5iRRJkPycjvlIi'),
+(82, 'maga', 'asas', 2494488407, 'a', NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -204,19 +213,19 @@ ALTER TABLE `oferta_transporte`
 -- AUTO_INCREMENT de la tabla `recoleccion_materiales`
 --
 ALTER TABLE `recoleccion_materiales`
-  MODIFY `id_recoleccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_recoleccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `retiro_materiales`
 --
 ALTER TABLE `retiro_materiales`
-  MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- Restricciones para tablas volcadas

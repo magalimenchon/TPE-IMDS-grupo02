@@ -37,7 +37,7 @@
                                 <td>{$fila->DNI_cartonero}</td>
                                 <td>{$fila->peso_material_recolectado}</td>
                                 <td>{$fila->fecha_recoleccion}</td>
-                                <td>{$fila->id_especificacion_material}</td>
+                                <td>{$fila->material_recolectado}</td>
                             </tr>
                     {/foreach}
                     </tbody>    

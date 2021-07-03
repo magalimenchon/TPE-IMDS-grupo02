@@ -41,4 +41,12 @@ class ModelCartonero
       $query->execute(array($id));
       return  $query->fetch(PDO::FETCH_OBJ);
     }
+
+    //obtener todos los registros de la tabla cartonero
+    function getCartoneros()
+    {
+      $query = $this->db->prepare('SELECT * FROM cartonero');
+      $query->execute();
+      return  $query->fetchAll(PDO::FETCH_OBJ);
+    }
 }

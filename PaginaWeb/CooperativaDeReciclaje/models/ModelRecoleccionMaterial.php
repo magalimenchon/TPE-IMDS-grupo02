@@ -15,7 +15,7 @@ class ModelRecoleccionMaterial
   {
     $query = $this->db->prepare('INSERT INTO recoleccion_materiales(
                                                 DNI_cartonero,
-                                                id_especificacion_material,
+                                                material_recolectado,
                                                 peso_material_recolectado,
                                                 fecha_recoleccion)
                                  VALUES(?,?,?,?)');
@@ -31,7 +31,7 @@ class ModelRecoleccionMaterial
     $query = $this->db->prepare('SELECT id_recoleccion
                                  FROM recoleccion_materiales
                                  WHERE DNI_cartonero=?
-                                 AND id_especificacion_material=?
+                                 AND material_recolectado=?
                                  AND peso_material_recolectado=?
                                  AND fecha_recoleccion=?');
 

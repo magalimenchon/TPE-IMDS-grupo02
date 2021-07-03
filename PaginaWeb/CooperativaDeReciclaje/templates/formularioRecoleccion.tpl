@@ -8,7 +8,7 @@
     </div>
 
     <label class="form-label">Material recolectado </label>
-    <select name="input_recoleccion_id_especificacion_material_fk" id="materiales_s" required>
+    <select name="input_recoleccion_material" id="materiales_s" required>
         <option value="" selected></option>
         {foreach from=$materiales item=material}
         <option value="{$material->nombre_mat}">{$material->nombre_mat}</option>
