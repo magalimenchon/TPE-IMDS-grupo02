@@ -94,7 +94,8 @@ class ControllerRecoleccionMaterial {
         $logged = $this->helper->checkLoggedIn();
         if($logged){
             $materiales = $this->modelRecoleccion->getMaterialesPorCartonero();
-            $this->viewRecoleccion->renderMaterialesPorCartonero($materiales, $logged);
+            $cartoneros = $this->modelRecoleccion->getDNIsCartoneros();
+            $this->viewRecoleccion->renderMaterialesPorCartonero($materiales, $cartoneros, $logged);
         } else {
             $this->viewRecoleccion->homeLocation();
         }

@@ -41,9 +41,10 @@ class ViewRecoleccionMaterial
         $this->smarty->display('templates/filtroRecoleccion.tpl');
     }
     
-    function renderMaterialesPorCartonero($materiales, $logged){
+    function renderMaterialesPorCartonero($materiales, $cartoneros, $logged){
         $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('materiales', $materiales);
+        $this->smarty->assign('cartoneros', $cartoneros);
         $this->smarty->assign('logged', $logged);
 
         $this->smarty->display('templates/materialesPorCartonero.tpl');
