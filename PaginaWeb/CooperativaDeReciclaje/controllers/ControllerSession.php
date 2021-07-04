@@ -23,11 +23,12 @@ class ControllerSession
 
     function verificarUsuario()
     {
+        $logged = $this->helper->checkLoggedIn();
         $email=$_POST['inputEmail'];
         $password=$_POST['inputPassword'];
         if (empty($email) || !isset($email) || empty($password) || !isset($password))
         {
-            $this->viewSession->mostrarMensaje("danger", "No se pudo iniciar sesion. Por favor complete todos los campos.");
+            $this->viewSession->mostrarMensaje("danger", "No se pudo iniciar sesion. Por favor complete todos los campos.", $logged);
         }
         else
         {
@@ -43,12 +44,12 @@ class ControllerSession
                 }
                 else
                 {
-                    $this->viewSession->mostrarMensaje("danger", "La password ingresada es incorrecta. Por favor intente nuevamente");
+                    $this->viewSession->mostrarMensaje("danger", "La password ingresada es incorrecta. Por favor intente nuevamente", $logged);
                 }
             }
             else
             {
-                $this->viewSession->mostrarMensaje("danger", "El email ingresado no esta registrado. Por favor intente nuevamente");
+                $this->viewSession->mostrarMensaje("danger", "El email ingresado no esta registrado. Por favor intente nuevamente", $logged);
             }
         }
     }

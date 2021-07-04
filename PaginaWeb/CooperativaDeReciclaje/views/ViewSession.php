@@ -17,12 +17,13 @@ class ViewSession{
         $this->smarty->display('templates/formularioLogin.tpl');
     }
 
-    function mostrarMensaje($tipoAlerta, $mensaje){
+    function mostrarMensaje($tipoAlerta, $mensaje, $logged){
         
         $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('tipoAlerta', $tipoAlerta);
         $this->smarty->assign('mensaje', $mensaje);
-       
+        $this->smarty->assign('logged', $logged);
+
         $this->smarty->display('templates/formularioLogin.tpl');
     }
 
