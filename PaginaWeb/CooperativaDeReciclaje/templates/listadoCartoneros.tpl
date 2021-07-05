@@ -15,7 +15,7 @@
                     <th scope="col" style="text-align: center;">Apellido</th>
                     <th scope="col" style="text-align: center;">Dirección</th>
                     <th scope="col" style="text-align: center;">Fecha de nacimiento</th>
-                    <th scope="col" style="text-align: center;">Categoría</th>
+                    <th scope="col" style="text-align: center;">Vehículo</th>
                     <th scope="col"> </th>
                     <th scope="col"> </th>
                 </tr>
@@ -28,7 +28,15 @@
                 <td style="text-align: center;">{$cartonero->apellido_cartonero}</td>
                 <td style="text-align: center;">{$cartonero->direccion_cartonero}</td>
                 <td style="text-align: center;">{$cartonero->fecha_nac_cartonero}</td>
-                <td style="text-align: center;">{$cartonero->categoria}</td>
+                {if $cartonero->categoria=="a"}
+                    <td style="text-align: center;"> - </td>
+                {elseif $cartonero->categoria=="b"}
+                    <td style="text-align: center;">Auto</td>
+                {elseif $cartonero->categoria=="c"}
+                    <td style="text-align: center;">Camioneta</td>   
+                {elseif $cartonero->categoria=="d"} 
+                    <td style="text-align: center;">Camión</td>   
+                {/if}
                 
                 <td style="text-align: center;"><a type="button" href="editar_cartonero/{$cartonero->DNI_cartonero}" class="btn btn-light"><i class="far fa-edit"></i></a></td>
                 <td style="text-align: center;"><a type="button" href="borrar_cartonero/{$cartonero->DNI_cartonero}" class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
