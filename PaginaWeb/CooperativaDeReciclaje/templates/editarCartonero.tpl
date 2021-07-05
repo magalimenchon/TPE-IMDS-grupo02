@@ -6,7 +6,7 @@
         {include file="mensaje.tpl"}
         <table class="table mb-3">
             <tbody>
-                <tr class="table-warning">
+                <tr class="table mb-3 table table-striped table-success table-hover table-borderless">
                     <th>{$cartonero->DNI_cartonero}</th>
                     <td>{$cartonero->nombre_cartonero}</td>
                     <td>{$cartonero->apellido_cartonero}</td>
@@ -44,7 +44,7 @@
                     value="{$cartonero->fecha_nac_cartonero}" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Categoria cartonero</label>
+                <label class="form-label">Categoria vehiculo</label>
                 <select name="cartonero_categoria">
                     <option value="a">-</option>
                     <option value="b">Auto</option>
