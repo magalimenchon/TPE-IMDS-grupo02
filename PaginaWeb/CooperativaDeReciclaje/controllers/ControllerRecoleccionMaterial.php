@@ -6,7 +6,8 @@ require_once './models/ModelMaterial.php';
 require_once './models/ModelCartonero.php';
 require_once 'helper.php';
 
-class ControllerRecoleccionMaterial {
+class ControllerRecoleccionMaterial
+{
 
     private $viewRecoleccion;
     private $modelRecoleccion;
@@ -14,7 +15,8 @@ class ControllerRecoleccionMaterial {
     private $modelCartonero;
     private $helper;
 
-    function __construct() {
+    function __construct()
+    {
         $this->viewRecoleccion = new ViewRecoleccionMaterial();
         $this->modelRecoleccion = new ModelRecoleccionMaterial();
         $this->modelMaterial = new ModelMaterial();
@@ -23,21 +25,23 @@ class ControllerRecoleccionMaterial {
     }
 
     //alta
-    function cargarRecoleccion() {
+    function cargarRecoleccion()
+    {
         $logged = $this->helper->checkLoggedIn();
-        if($logged){
+        if ($logged) {
             $cartonero = $_POST['input_recoleccion_dni_cartonero_fk'];
             $material = $_POST['input_recoleccion_material'];
             $peso = $_POST['input_recoleccion_peso'];
             $fecha = $_POST['input_recoleccion_fecha'];
 
-            if (isset($cartonero) && !empty($cartonero) &&
+            if (
+                isset($cartonero) && !empty($cartonero) &&
                 isset($material) && !empty($material) &&
                 isset($peso) && !empty($peso) &&
                 isset($fecha) && !empty($fecha)
             ) {
                 $recoleccion = $this->modelRecoleccion->getRecoleccion($cartonero, $material, $peso, $fecha);
-            
+
                 if ($recoleccion) {
                     $materiales = $this->modelRecoleccion->getRecoleccionesMateriales();
                     $this->viewRecoleccion->mostrarMensaje($materiales, "danger", "Ya ha registrado esta recolección.", $logged);
@@ -57,9 +61,10 @@ class ControllerRecoleccionMaterial {
         }
     }
 
-    function buscarRecoleccionesPorDNI() {
+    function buscarRecoleccionesPorDNI()
+    {
         $logged = $this->helper->checkLoggedIn();
-        if($logged){
+        if ($logged) {
             $DNI = $_POST['buscarPorDNI'];
 
             if (isset($DNI) && !empty($DNI)) {
@@ -67,10 +72,9 @@ class ControllerRecoleccionMaterial {
                 $filas = $this->modelRecoleccion->getRecoleccionesPorDNI($DNI);
                 $materiales = $this->modelMaterial->getMateriales();
                 $cartonero = $this->modelCartonero->getCartonero($DNI);
-                if($cartonero){
+                if ($cartonero) {
                     $this->viewRecoleccion->renderResultsRecoleccionPorDNI($filas, $materiales, $cartonero, $logged);
-                }
-                else{
+                } else {
                     $filas = $this->modelRecoleccion->getRecoleccionesMateriales();
                     $this->viewRecoleccion->mostrarMensaje($filas, "danger", "No existe el cartonero buscado en la base de datos.", $logged);
                 }
@@ -80,9 +84,10 @@ class ControllerRecoleccionMaterial {
         }
     }
 
-    function buscarRecolecciones() {
+    function buscarRecolecciones()
+    {
         $logged = $this->helper->checkLoggedIn();
-        if($logged){
+        if ($logged) {
             $materiales = $this->modelRecoleccion->getRecoleccionesMateriales();
             $this->viewRecoleccion->renderResultsRecoleccion($materiales, $logged);
         } else {
@@ -90,12 +95,17 @@ class ControllerRecoleccionMaterial {
         }
     }
 
-    function viewMaterialesAcopiados(){
+    function viewMaterialesAcopiados()
+    {
         $logged = $this->helper->checkLoggedIn();
-        if($logged){
-            $materiales = $this->modelRecoleccion->getMaterialesPorCartonero();
+        if ($logged) {
             $cartoneros = $this->modelRecoleccion->getDNIsCartoneros();
-            $this->viewRecoleccion->renderMaterialesPorCartonero($materiales, $cartoneros, $logged);
+            if ($cartoneros) {
+                $materiales = $this->modelRecoleccion->getMaterialesPorCartonero();
+                $this->viewRecoleccion->renderMaterialesPorCartonero($materiales, $cartoneros, $logged);
+            } else {
+                $this->viewRecoleccion->mostrarMensajeResumen("info", "Aún no se ha cargado información sobre las recolecciones.", $logged);
+            }
         } else {
             $this->viewRecoleccion->homeLocation();
         }

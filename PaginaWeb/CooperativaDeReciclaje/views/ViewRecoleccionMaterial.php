@@ -46,6 +46,16 @@ class ViewRecoleccionMaterial
         $this->smarty->assign('materiales', $materiales);
         $this->smarty->assign('cartoneros', $cartoneros);
         $this->smarty->assign('logged', $logged);
+        $this->smarty->assign('mensaje', null);
+        
+        $this->smarty->display('templates/materialesPorCartonero.tpl');
+    }
+
+    function mostrarMensajeResumen($tipoAlerta, $mensaje, $logged){
+        $this->smarty->assign('base_url', BASE_URL);
+        $this->smarty->assign('tipoAlerta', $tipoAlerta);
+        $this->smarty->assign('mensaje', $mensaje);
+        $this->smarty->assign('logged', $logged);
 
         $this->smarty->display('templates/materialesPorCartonero.tpl');
     }

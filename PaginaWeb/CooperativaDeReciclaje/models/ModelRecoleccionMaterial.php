@@ -58,7 +58,7 @@ class ModelRecoleccionMaterial
   function getMaterialesPorCartonero(){
     $sentencia=$this->db->prepare("SELECT DNI_cartonero, nombre_cartonero,
                                           apellido_cartonero, material_recolectado,
-                                          SUM(peso_material_recolectado)
+                                          SUM(peso_material_recolectado) AS sumatoria
                                    FROM cartonero NATURAL JOIN recoleccion_materiales
                                    GROUP BY cartonero.DNI_cartonero, recoleccion_materiales.material_recolectado");
     $sentencia->execute();
@@ -67,8 +67,11 @@ class ModelRecoleccionMaterial
 
   //obtiene todos los DNIs de cartoneros que recolectaron algún material
   function getDNIsCartoneros(){
-    $sentencia=$this->db->prepare("SELECT DISTINCT DNI_cartonero
-                                   FROM recoleccion_materiales");
+    $sentencia=$this->db->prepare("SELECT DISTINCT DNI_cartonero,
+                                                   nombre_cartonero,
+                                                   apellido_cartonero
+                                   FROM recoleccion_materiales
+                                   NATURAL JOIN cartonero");
     $sentencia->execute();
     return $sentencia->fetchAll(PDO::FETCH_OBJ);
   }
