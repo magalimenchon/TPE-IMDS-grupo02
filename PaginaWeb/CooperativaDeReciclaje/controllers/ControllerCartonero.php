@@ -29,14 +29,13 @@ class ControllerCartonero {
     }
     
     function viewCartoneros(){
-        $check=$this->helper-> checkLoggedIn();
-        
-        if($check == true){
+        $logged = $this->helper-> checkLoggedIn();
+        if($logged){
             $cartonteros = $this-> modelCartonero-> getCartoneros();
-            $this-> viewCartonero-> showCartoneros($check, $cartonteros);
+            $this-> viewCartonero-> showCartoneros($logged, $cartonteros);
         }
-        else{
-            $this-> helper->showLoggin($check);
+        else {
+            $this->viewCartonero-> homeLocation();
         }
     }
 }
