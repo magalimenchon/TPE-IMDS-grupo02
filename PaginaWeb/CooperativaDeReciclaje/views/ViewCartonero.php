@@ -24,6 +24,27 @@ class ViewCartonero {
         $this-> smarty->display('templates/listadoCartoneros.tpl');
     }
 
+    function mostrarEdicionCartonero($cartonero, $logged) {
+        $this->smarty->assign('base_url', BASE_URL);
+
+        $this->smarty->assign('cartonero', $cartonero);
+        $this->smarty->assign('logged', $logged);
+
+        $this->smarty->display('templates/editarCartonero.tpl');
+    }
+
+    function mostrarMensajeEdicion($cartonero, $tipoAlerta, $mensaje, $logged){
+        
+        $this->smarty->assign('base_url', BASE_URL);
+
+        $this->smarty->assign('cartonero', $cartonero);
+        $this->smarty->assign('tipoAlerta', $tipoAlerta);
+        $this->smarty->assign('mensaje', $mensaje);
+        $this->smarty->assign('logged', $logged);
+       
+        $this->smarty->display('templates/editarCartonero.tpl');
+    }
+
     function homeLocation(){
         header("Location: ".BASE_URL."home");
     }

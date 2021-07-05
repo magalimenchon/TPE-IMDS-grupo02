@@ -42,6 +42,8 @@
     $router->addRoute("formularioAltaCartonero", "GET", "ControllerCartonero", "viewFormulario");
     $router->addRoute("materiales_acopiados", "GET", "ControllerRecoleccionMaterial", "viewMaterialesAcopiados");
     $router->addRoute("cartoneros", "GET", "ControllerCartonero", "viewCartoneros");
+    $router->addRoute("editar_cartonero/:ID", "GET", "ControllerCartonero", "editarCartonero");
+    $router->addRoute("modificar_cartonero", "POST", "ControllerCartonero", "updateCartonero");
     //--------
 
     $router->setDefaultRoute("Controller", "viewHome");
