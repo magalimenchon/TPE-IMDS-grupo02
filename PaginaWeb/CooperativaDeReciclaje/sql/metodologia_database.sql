@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 03-07-2021 a las 20:49:28
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.2.34
+-- Host: 127.0.0.1
+-- Generation Time: Jul 06, 2021 at 11:17 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `metodologia_database`
+-- Database: `metodologia_database`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cartonero`
+-- Table structure for table `cartonero`
 --
 
 CREATE TABLE `cartonero` (
@@ -33,21 +33,22 @@ CREATE TABLE `cartonero` (
   `apellido_cartonero` varchar(40) NOT NULL,
   `direccion_cartonero` varchar(120) NOT NULL,
   `fecha_nac_cartonero` date NOT NULL,
-  `categoria` char(1) DEFAULT NULL
+  `categoria` char(1) DEFAULT NULL,
+  `borrado` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `cartonero`
+-- Dumping data for table `cartonero`
 --
 
-INSERT INTO `cartonero` (`DNI_cartonero`, `nombre_cartonero`, `apellido_cartonero`, `direccion_cartonero`, `fecha_nac_cartonero`, `categoria`) VALUES
-(1, 'Florencia', 'Perez', 'calle rivadavia', '1996-06-15', 'b'),
-(2, 'Maria', 'Lopez', 'calle favaloro', '1993-06-19', 'a');
+INSERT INTO `cartonero` (`DNI_cartonero`, `nombre_cartonero`, `apellido_cartonero`, `direccion_cartonero`, `fecha_nac_cartonero`, `categoria`, `borrado`) VALUES
+(99999, 'nuevo cartonero', 'apellido', 'uriburu', '1990-10-10', 'a', 0),
+(32000000, 'holaaa', 'comooo', 'hehe', '1990-10-10', 'a', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `especificacion_materiales`
+-- Table structure for table `especificacion_materiales`
 --
 
 CREATE TABLE `especificacion_materiales` (
@@ -60,7 +61,7 @@ CREATE TABLE `especificacion_materiales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `especificacion_materiales`
+-- Dumping data for table `especificacion_materiales`
 --
 
 INSERT INTO `especificacion_materiales` (`id_especificacion`, `nombre_mat`, `detalle`, `no_aceptado`, `forma_entrega`, `imagen_material`) VALUES
@@ -69,7 +70,7 @@ INSERT INTO `especificacion_materiales` (`id_especificacion`, `nombre_mat`, `det
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `oferta_transporte`
+-- Table structure for table `oferta_transporte`
 --
 
 CREATE TABLE `oferta_transporte` (
@@ -82,7 +83,7 @@ CREATE TABLE `oferta_transporte` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `recoleccion_materiales`
+-- Table structure for table `recoleccion_materiales`
 --
 
 CREATE TABLE `recoleccion_materiales` (
@@ -94,18 +95,16 @@ CREATE TABLE `recoleccion_materiales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `recoleccion_materiales`
+-- Dumping data for table `recoleccion_materiales`
 --
 
 INSERT INTO `recoleccion_materiales` (`id_recoleccion`, `peso_material_recolectado`, `fecha_recoleccion`, `material_recolectado`, `DNI_cartonero`) VALUES
-(19, 500, '2001-02-25', '0', 1),
-(20, 500, '2000-05-05', 'Papel', 1),
-(21, 1, '1111-11-11', 'Papel', 1);
+(22, 400, '2021-07-14', 'papel', 32000000);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `retiro_materiales`
+-- Table structure for table `retiro_materiales`
 --
 
 CREATE TABLE `retiro_materiales` (
@@ -119,7 +118,7 @@ CREATE TABLE `retiro_materiales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `retiro_materiales`
+-- Dumping data for table `retiro_materiales`
 --
 
 INSERT INTO `retiro_materiales` (`id_retiro`, `foto`, `categoria`, `inicio_horario_retiro`, `fin_horario_retiro`, `DNI_cartonero`, `id_usuario`) VALUES
@@ -128,7 +127,7 @@ INSERT INTO `retiro_materiales` (`id_retiro`, `foto`, `categoria`, `inicio_horar
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -142,7 +141,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `telefono_usuario`, `direccion_usuario`, `mail_usuario`, `password`) VALUES
@@ -150,37 +149,37 @@ INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `tele
 (82, 'maga', 'asas', 2494488407, 'a', NULL, NULL);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `cartonero`
+-- Indexes for table `cartonero`
 --
 ALTER TABLE `cartonero`
   ADD PRIMARY KEY (`DNI_cartonero`);
 
 --
--- Indices de la tabla `especificacion_materiales`
+-- Indexes for table `especificacion_materiales`
 --
 ALTER TABLE `especificacion_materiales`
   ADD PRIMARY KEY (`id_especificacion`);
 
 --
--- Indices de la tabla `oferta_transporte`
+-- Indexes for table `oferta_transporte`
 --
 ALTER TABLE `oferta_transporte`
   ADD PRIMARY KEY (`id_oferta`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indices de la tabla `recoleccion_materiales`
+-- Indexes for table `recoleccion_materiales`
 --
 ALTER TABLE `recoleccion_materiales`
   ADD PRIMARY KEY (`id_recoleccion`),
   ADD KEY `DNI_cartonero` (`DNI_cartonero`);
 
 --
--- Indices de la tabla `retiro_materiales`
+-- Indexes for table `retiro_materiales`
 --
 ALTER TABLE `retiro_materiales`
   ADD PRIMARY KEY (`id_retiro`),
@@ -188,63 +187,63 @@ ALTER TABLE `retiro_materiales`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `especificacion_materiales`
+-- AUTO_INCREMENT for table `especificacion_materiales`
 --
 ALTER TABLE `especificacion_materiales`
   MODIFY `id_especificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT de la tabla `oferta_transporte`
+-- AUTO_INCREMENT for table `oferta_transporte`
 --
 ALTER TABLE `oferta_transporte`
   MODIFY `id_oferta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `recoleccion_materiales`
+-- AUTO_INCREMENT for table `recoleccion_materiales`
 --
 ALTER TABLE `recoleccion_materiales`
-  MODIFY `id_recoleccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_recoleccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT de la tabla `retiro_materiales`
+-- AUTO_INCREMENT for table `retiro_materiales`
 --
 ALTER TABLE `retiro_materiales`
   MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `oferta_transporte`
+-- Constraints for table `oferta_transporte`
 --
 ALTER TABLE `oferta_transporte`
   ADD CONSTRAINT `oferta_transporte_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `recoleccion_materiales`
+-- Constraints for table `recoleccion_materiales`
 --
 ALTER TABLE `recoleccion_materiales`
   ADD CONSTRAINT `recoleccion_materiales_ibfk_1` FOREIGN KEY (`DNI_cartonero`) REFERENCES `cartonero` (`DNI_cartonero`);
 
 --
--- Filtros para la tabla `retiro_materiales`
+-- Constraints for table `retiro_materiales`
 --
 ALTER TABLE `retiro_materiales`
   ADD CONSTRAINT `FK_RETIRO_MATERIALES_CARTONERO` FOREIGN KEY (`DNI_cartonero`) REFERENCES `cartonero` (`DNI_cartonero`) ON DELETE SET NULL ON UPDATE CASCADE,
