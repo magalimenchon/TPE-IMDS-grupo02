@@ -11,11 +11,12 @@ class ModelCartonero
     }
  
     //alta
-    function insertCartonero($nombre, $apellido, $direccion, $fecha_nac, $categoria)
+    function insertCartonero($nombre, $apellido, $dni, $dir, $fecha, $categoria)
     {
-      $query = $this->db->prepare('INSERT INTO cartonero(nombre_cartonero, apellido_cartonero,
-        direccion_cartonero, fecha_nac_cartonero, categoria) VALUES(?,?,?,?,?)');
-      $query->execute(array($nombre, $apellido, $direccion, $fecha_nac, $categoria));
+      $query = $this->db->prepare('INSERT INTO cartonero(nombre_cartonero, apellido_cartonero, DNI_cartonero
+        direccion_cartonero, fecha_nac_cartonero, categoria) VALUES(?,?,?,?,?,?)');
+      $query->execute(array($nombre, $apellido, $dni, $dir, $fecha, $categoria));
+      
       return $this->db->lastInsertId();
     }
     
@@ -49,4 +50,5 @@ class ModelCartonero
       $query->execute();
       return  $query->fetchAll(PDO::FETCH_OBJ);
     }
+
 }

@@ -77,4 +77,30 @@ class ControllerCartonero
             $this->view->homeLocation();
         }
     }
+
+    function insertCartonero(){
+        $check = $this->helper->checkLoggedIn();
+
+        if ($check == true) {
+            $nombre = $_POST['cartonero_nombre'];
+            $apellido = $_POST['cartonero_apellido'];
+            $dni = $_POST['cartonero_dni'];
+            $dir = $_POST['cartonero_direccion'];
+            $fecha = $_POST['cartonero_fecha'];
+            $categoria = $_POST['cartonero_select'];
+            if (
+                isset($nombre) && !empty($nombre) &&
+                isset($apellido) && !empty($apellido) &&
+                isset($dni) && !empty($dni) &&
+                isset($dir) && !empty($dir) &&
+                isset($fecha) && !empty($fecha) &&
+                isset($categoria) && !empty($categoria) ) {
+                    $this->modelCartonero->insertCartonero($nombre, $apellido, $dni, $dir, $fecha, $categoria);
+                    
+                    $this->viewCartonero->showFormulario($check);
+                }
+        } else {
+            $this->helper->showLoggin($check);
+        }
+    }
 }

@@ -26,12 +26,12 @@
                     <a class="dropdown-item" style="background-color: rgba(50, 168, 21, 0.733);" href="cartoneros">Cartoneros</a>
                     <a class="dropdown-item" style="background-color: rgba(50, 168, 21, 0.733);" href="recoleccion">Registro de recolecciones</a>
                     <a class="dropdown-item" style="background-color: rgba(50, 168, 21, 0.733);" href="materiales_acopiados">Materiales acopiados</a>
+                    <a class="dropdown-item" style="background-color: rgba(50, 168, 21, 0.733);" href="formularioAltaCartonero">Añadir cartonero</a>
                 </div>
             </li>     
             {/if}
             {if $logged eq false}
                 <li class="nav-item"><a class="link nav-link active" aria-current="page" href="login">Iniciar Sesión</a></li>
-                <li class="nav-item"><a class="link nav-link active" aria-current="page" href="formularioAltaCartonero">Añadir cartonero</a></li>
             {/if}
             {if $logged}
             <li>
