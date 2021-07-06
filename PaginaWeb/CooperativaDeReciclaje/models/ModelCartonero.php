@@ -13,9 +13,8 @@ class ModelCartonero
     //alta
     function insertCartonero($nombre, $apellido, $dni, $dir, $fecha, $categoria)
     {
-      $query = $this->db->prepare('INSERT INTO cartonero(nombre_cartonero, apellido_cartonero, DNI_cartonero
-        direccion_cartonero, fecha_nac_cartonero, categoria) VALUES(?,?,?,?,?,?)');
-      $query->execute(array($nombre, $apellido, $dni, $dir, $fecha, $categoria));
+      $query = $this->db->prepare('INSERT INTO cartonero VALUES(?,?,?,?,?,?)');
+      $query->execute(array($dni, $nombre, $apellido, $dir, $fecha, $categoria));
       
       return $this->db->lastInsertId();
     }

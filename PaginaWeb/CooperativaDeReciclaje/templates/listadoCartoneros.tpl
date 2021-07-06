@@ -44,7 +44,7 @@
             </tbody>
             {/foreach}
         </table>
-
+        {include file="formularioCartoneros.tpl"}
     </section>
 </body>
 {include file="footer.tpl"}

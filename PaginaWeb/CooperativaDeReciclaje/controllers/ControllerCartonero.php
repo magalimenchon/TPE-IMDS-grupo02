@@ -18,17 +18,6 @@ class ControllerCartonero
         $this->helper = new Helper();
     }
 
-    function viewFormulario()
-    {
-        $check = $this->helper->checkLoggedIn();
-
-        if ($check == true) {
-            $this->viewCartonero->showFormulario($check);
-        } else {
-            $this->helper->showLoggin($check);
-        }
-    }
-
     function viewCartoneros()
     {
         $logged = $this->helper->checkLoggedIn();
@@ -97,10 +86,10 @@ class ControllerCartonero
                 isset($categoria) && !empty($categoria) ) {
                     $this->modelCartonero->insertCartonero($nombre, $apellido, $dni, $dir, $fecha, $categoria);
                     
-                    $this->viewCartonero->showFormulario($check);
+                    $this->viewCartoneros();
                 }
         } else {
-            $this->helper->showLoggin($check);
+            $this->view->homeLocation();
         }
     }
 }

@@ -1,7 +1,4 @@
-{include file="header.tpl"}
 
-
-<body class="fondo">
         <section class="overlay">
             <h2>Añadir cartonero</h2>
             
@@ -41,6 +38,3 @@
                 </div>
             </form>
         </section>
-</body>
-
-{include file="footer.tpl"}
