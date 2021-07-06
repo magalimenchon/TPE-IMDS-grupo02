@@ -52,8 +52,8 @@ class ControllerCartonero
                 isset($fecha_nacimiento) && !empty($fecha_nacimiento) &&
                 isset($categoria) && !empty($categoria)
             ) {
-                $this->modelCartonero->updateCartonero($DNI,$nombre, $apellido, $direccion, $fecha_nacimiento, $categoria);
-                $this->viewCartoneros($logged);
+                $this->modelCartonero->updateCartonero($DNI, $nombre, $apellido, $direccion, $fecha_nacimiento, $categoria);
+                $this->viewCartonero->showLocationCartoneros();
             } else {
                 $this->viewCartonero->mostrarMensajeEdicion($cartonero, "danger", "Complete todos los campos.", $logged);
             }
@@ -62,7 +62,8 @@ class ControllerCartonero
         }
     }
 
-    function insertCartonero(){
+    function insertCartonero()
+    {
         $logged = $this->helper->checkLoggedIn();
 
         if ($logged == true) {
@@ -78,11 +79,12 @@ class ControllerCartonero
                 isset($dni) && !empty($dni) &&
                 isset($dir) && !empty($dir) &&
                 isset($fecha) && !empty($fecha) &&
-                isset($categoria) && !empty($categoria) ) {
-                    $this->modelCartonero->insertCartonero($nombre, $apellido, $dni, $dir, $fecha, $categoria);
-                    
-                    $this->viewCartoneros($logged);
-                }
+                isset($categoria) && !empty($categoria)
+            ) {
+                $this->modelCartonero->insertCartonero($nombre, $apellido, $dni, $dir, $fecha, $categoria);
+
+                $this->viewCartonero->showLocationCartoneros();
+            }
         } else {
             $this->view->homeLocation();
         }

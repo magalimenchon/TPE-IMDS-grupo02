@@ -45,6 +45,9 @@ class ViewCartonero {
         $this->smarty->display('templates/editarCartonero.tpl');
     }
 
+    function showLocationCartoneros(){
+        header("Location: ".BASE_URL."cartoneros");
+    }
     function homeLocation(){
         header("Location: ".BASE_URL."home");
     }

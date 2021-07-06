@@ -12,7 +12,15 @@
                     <td>{$cartonero->apellido_cartonero}</td>
                     <td>{$cartonero->direccion_cartonero}</td>
                     <td>{$cartonero->fecha_nac_cartonero}</td>
-                    <td>{$cartonero->categoria}</td>
+                    {if $cartonero->categoria=="a"}
+                        <td style="text-align: center;"> - </td>
+                    {elseif $cartonero->categoria=="b"}
+                        <td style="text-align: center;">Auto</td>
+                    {elseif $cartonero->categoria=="c"}
+                        <td style="text-align: center;">Camioneta</td>   
+                    {elseif $cartonero->categoria=="d"} 
+                        <td style="text-align: center;">Camión</td>   
+                    {/if}
                 </tr>
             </tbody>
         </table>
