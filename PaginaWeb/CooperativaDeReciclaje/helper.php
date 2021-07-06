@@ -13,15 +13,11 @@ class Helper
 
     public function checkLoggedIn()
     {
+        session_start();
         if (isset($_SESSION['email'])) {
             return true;
         } else {
-            session_start();
-            if (isset($_SESSION['email'])) {
-                return true;
-            } else {
-                return false;
-            }
+            return false;
         }
     }
 

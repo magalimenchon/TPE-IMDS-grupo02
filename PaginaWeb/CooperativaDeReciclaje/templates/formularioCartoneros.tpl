@@ -13,7 +13,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">DNI</label>
-                    <input type="text" class="form-control" name="cartonero_dni" placeholder="Dirección" required>
+                    <input type="number" class="form-control" name="cartonero_dni" placeholder="Dirección" required>
                 </div>
                 <div class="mb-3">
                     <label for="title">Dirección</label>

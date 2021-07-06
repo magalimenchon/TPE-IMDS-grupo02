@@ -18,15 +18,10 @@ class ControllerCartonero
         $this->helper = new Helper();
     }
 
-    function viewCartoneros()
+    function viewCartoneros($logged)
     {
-        $logged = $this->helper->checkLoggedIn();
-        if ($logged) {
-            $cartoneros = $this->modelCartonero->getCartoneros();
-            $this->viewCartonero->showCartoneros($logged, $cartoneros);
-        } else {
-            $this->viewCartonero->homeLocation();
-        }
+        $cartoneros = $this->modelCartonero->getCartoneros();
+        $this->viewCartonero->showCartoneros($logged, $cartoneros);
     }
     function editarCartonero($params = null)
     {
@@ -58,7 +53,7 @@ class ControllerCartonero
                 isset($categoria) && !empty($categoria)
             ) {
                 $this->modelCartonero->updateCartonero($DNI,$nombre, $apellido, $direccion, $fecha_nacimiento, $categoria);
-                $this->viewCartoneros();
+                $this->viewCartoneros($logged);
             } else {
                 $this->viewCartonero->mostrarMensajeEdicion($cartonero, "danger", "Complete todos los campos.", $logged);
             }
@@ -68,9 +63,9 @@ class ControllerCartonero
     }
 
     function insertCartonero(){
-        $check = $this->helper->checkLoggedIn();
+        $logged = $this->helper->checkLoggedIn();
 
-        if ($check == true) {
+        if ($logged == true) {
             $nombre = $_POST['cartonero_nombre'];
             $apellido = $_POST['cartonero_apellido'];
             $dni = $_POST['cartonero_dni'];
@@ -86,7 +81,7 @@ class ControllerCartonero
                 isset($categoria) && !empty($categoria) ) {
                     $this->modelCartonero->insertCartonero($nombre, $apellido, $dni, $dir, $fecha, $categoria);
                     
-                    $this->viewCartoneros();
+                    $this->viewCartoneros($logged);
                 }
         } else {
             $this->view->homeLocation();
