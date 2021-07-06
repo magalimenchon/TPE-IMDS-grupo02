@@ -21,8 +21,12 @@ class ControllerCartonero
     function viewCartoneros()
     {
         $logged = $this->helper->checkLoggedIn();
-        $cartoneros = $this->modelCartonero->getCartoneros();
-        $this->viewCartonero->showCartoneros($logged, $cartoneros);
+        if ($logged) {
+            $cartoneros = $this->modelCartonero->getCartoneros();
+            $this->viewCartonero->showCartoneros($logged, $cartoneros);
+        } else {
+            $this->viewCartonero->homeLocation();
+        }
     }
 
     function editarCartonero($params = null)
@@ -33,7 +37,7 @@ class ControllerCartonero
             $cartonero = $this->modelCartonero->getCartonero($id);
             $this->viewCartonero->mostrarEdicionCartonero($cartonero, $logged);
         } else {
-            $this->view->homeLocation();
+            $this->viewCartonero->homeLocation();
         }
     }
     function updateCartonero()
@@ -62,7 +66,7 @@ class ControllerCartonero
                 $this->viewCartonero->mostrarMensajeEdicion($cartonero, "danger", "Complete todos los campos.", $logged);
             }
         } else {
-            $this->view->homeLocation();
+            $this->viewCartonero->homeLocation();
         }
     }
 
@@ -90,7 +94,7 @@ class ControllerCartonero
                 $this->viewCartonero->showLocationCartoneros();
             }
         } else {
-            $this->view->homeLocation();
+            $this->viewCartonero->homeLocation();
         }
     }
 
@@ -105,7 +109,7 @@ class ControllerCartonero
             }
             $this->viewCartonero->showLocationCartoneros();
         } else {
-            $this->view->homeLocation();
+            $this->viewCartonero->homeLocation();
         }
     }
 }

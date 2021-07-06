@@ -74,6 +74,13 @@
                         <option value=1>Si</option>
                     </select>
                 </div>
+            {else}
+                <div class="ocultar">
+                    <label class="form-label">Borrado</label>
+                    <select name="cartonero_borrado">
+                        <option value="{$cartonero->borrado}">No</option>
+                    </select>
+                </div>
             {/if}
             <div class="col text-center">
                 <button type="submit" class="btn btn-lg btn-success">Editar</button>
