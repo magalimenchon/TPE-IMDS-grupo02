@@ -16,6 +16,7 @@
                     <th scope="col" style="text-align: center;">Dirección</th>
                     <th scope="col" style="text-align: center;">Fecha de nacimiento</th>
                     <th scope="col" style="text-align: center;">Vehículo</th>
+                    <th scope="col" style="text-align: center;">Borrado</th>
                     <th scope="col"> </th>
                     <th scope="col"> </th>
                 </tr>
@@ -37,7 +38,11 @@
                 {elseif $cartonero->categoria=="d"} 
                     <td style="text-align: center;">Camión</td>   
                 {/if}
-                
+                {if $cartonero->borrado == 0}
+                    <td style="text-align: center;"> No </td>
+                {else}
+                    <td style="text-align: center;"> Si </td>
+                {/if}
                 <td style="text-align: center;"><a type="button" href="editar_cartonero/{$cartonero->DNI_cartonero}" class="btn btn-light"><i class="far fa-edit"></i></a></td>
                 <td style="text-align: center;"><a type="button" href="borrar_cartonero/{$cartonero->DNI_cartonero}" class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
             </tr>

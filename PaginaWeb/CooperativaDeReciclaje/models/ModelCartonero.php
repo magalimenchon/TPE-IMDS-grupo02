@@ -13,9 +13,9 @@ class ModelCartonero
     //alta
     function insertCartonero($nombre, $apellido, $dni, $dir, $fecha, $categoria)
     {
-      $query = $this->db->prepare('INSERT INTO cartonero VALUES(?,?,?,?,?,?)');
-      $query->execute(array($dni, $nombre, $apellido, $dir, $fecha, $categoria));
-      
+      $query = $this->db->prepare('INSERT INTO cartonero(nombre_cartonero, apellido_cartonero, DNI_cartonero,
+      direccion_cartonero, fecha_nac_cartonero, categoria) VALUES(?,?,?,?,?,?)');
+      $query->execute(array($nombre, $apellido, $dni, $dir, $fecha, $categoria));
       return $this->db->lastInsertId();
     }
     
@@ -24,6 +24,15 @@ class ModelCartonero
     {
       $query = $this->db->prepare('DELETE FROM cartonero WHERE DNI_cartonero=?');
       $query->execute(array($id));
+
+      return $query->rowCount();
+    }
+
+    // set borrado
+    function setBorradoCartonero($id){
+      $borrado = 1; // 1 == true
+      $query = $this->db->prepare('UPDATE cartonero SET borrado=? WHERE DNI_cartonero=?');
+      $query->execute(array($borrado, $id));
     }
 
     //modificación

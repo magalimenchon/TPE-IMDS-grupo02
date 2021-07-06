@@ -44,6 +44,7 @@
     $router->addRoute("editar_cartonero/:ID", "GET", "ControllerCartonero", "editarCartonero");
     $router->addRoute("modificar_cartonero", "POST", "ControllerCartonero", "updateCartonero");
     $router->addRoute("altaCartonero", "POST", "ControllerCartonero", "insertCartonero");
+    $router->addRoute("borrar_cartonero/:ID", "GET", "ControllerCartonero", "borrarCartonero");
     //--------
 
     $router->setDefaultRoute("Controller", "viewHome");

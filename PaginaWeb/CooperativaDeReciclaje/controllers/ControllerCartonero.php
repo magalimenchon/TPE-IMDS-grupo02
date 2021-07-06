@@ -87,4 +87,18 @@ class ControllerCartonero
             $this->view->homeLocation();
         }
     }
+
+    function borrarCartonero($params = null) {
+        $logged = $this->helper->checkLoggedIn();
+        if($logged){
+            $dni = $params[":ID"];
+            $checkear = $this->modelCartonero->deleteCartonero($dni);
+            if($checkear == 0){
+                $this->modelCartonero->setBorradoCartonero($dni);
+            }
+            $this->viewCartoneros($logged);
+        } else {
+            $this->view->homeLocation();
+        }
+    }
 }
