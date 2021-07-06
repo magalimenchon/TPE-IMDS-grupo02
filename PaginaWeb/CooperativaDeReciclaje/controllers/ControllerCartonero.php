@@ -18,11 +18,13 @@ class ControllerCartonero
         $this->helper = new Helper();
     }
 
-    function viewCartoneros($logged)
+    function viewCartoneros()
     {
+        $logged = $this->helper->checkLoggedIn();
         $cartoneros = $this->modelCartonero->getCartoneros();
         $this->viewCartonero->showCartoneros($logged, $cartoneros);
     }
+
     function editarCartonero($params = null)
     {
         $logged = $this->helper->checkLoggedIn();
@@ -98,7 +100,7 @@ class ControllerCartonero
             if($checkear == 0){
                 $this->modelCartonero->setBorradoCartonero($dni);
             }
-            $this->viewCartoneros($logged);
+            $this->viewCartonero->showLocationCartoneros();
         } else {
             $this->view->homeLocation();
         }
