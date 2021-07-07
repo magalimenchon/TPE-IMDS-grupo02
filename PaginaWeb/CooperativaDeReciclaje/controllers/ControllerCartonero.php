@@ -67,6 +67,7 @@ class ControllerCartonero
     function insertCartonero()
     {
         $logged = $this->helper->checkLoggedIn();
+        $time_now = date("Y-m-d ");
 
         if ($logged == true) {
             $nombre = $_POST['cartonero_nombre'];
@@ -82,6 +83,7 @@ class ControllerCartonero
                 isset($dir) && !empty($dir) &&
                 isset($fecha) && !empty($fecha) &&
                 isset($categoria) && !empty($categoria)
+                && $dni> 1 && $fecha < $time_now
             ) {
                 $this->modelCartonero->insertCartonero($nombre, $apellido, $dni, $dir, $fecha, $categoria);
 
