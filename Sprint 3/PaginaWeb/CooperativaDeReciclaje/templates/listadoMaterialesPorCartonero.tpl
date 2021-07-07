@@ -32,7 +32,7 @@
     <br><br>
     <h4>Información sobre recolecciones:</h4>
     <br>
-    {if isset($filas)}
+    {if isset($filas[0])}
         <table class="table mb-3 table-hover table-borderless">
             <thead>
                 <tr>
