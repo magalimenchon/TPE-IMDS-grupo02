@@ -45,7 +45,7 @@ class ControllerRecoleccionMaterial
             ) {
                 $recoleccion = $this->modelRecoleccion->getRecoleccion($cartonero, $material, $peso, $fecha);
                 $cartoneros = $this->modelCartonero->getCartoneros();
-                if ($recoleccion) {;
+                if ($recoleccion) {
                     $this->viewRecoleccion->mostrarMensaje($cartoneros, "danger", "Ya ha registrado esta recolección.", $logged);
                 } else {
                     $insercion = $this->modelRecoleccion->insertarRecoleccion($cartonero, $material, $peso, $fecha);
