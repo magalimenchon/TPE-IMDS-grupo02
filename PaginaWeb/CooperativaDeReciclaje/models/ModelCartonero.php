@@ -36,11 +36,11 @@ class ModelCartonero
     }
 
     //modificación
-    function updateCartonero($id, $nombre, $apellido, $direccion, $fecha_nac, $categoria)
+    function updateCartonero($id, $nombre, $apellido, $direccion, $fecha_nac, $categoria, $borrado)
     {
       $query = $this->db->prepare("UPDATE cartonero SET nombre_cartonero=?, apellido_cartonero=?, 
-        direccion_cartonero=?, fecha_nac_cartonero=?, categoria=? WHERE DNI_cartonero=?");
-      $query->execute(array($nombre, $apellido, $direccion, $fecha_nac, $categoria, $id));
+        direccion_cartonero=?, fecha_nac_cartonero=?, categoria=?, borrado=? WHERE DNI_cartonero=?");
+      $query->execute(array($nombre, $apellido, $direccion, $fecha_nac, $categoria, $borrado, $id));
     }
 
     //obtener cartonero por ID

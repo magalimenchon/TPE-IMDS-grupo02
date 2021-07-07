@@ -21,8 +21,12 @@ class ControllerCartonero
     function viewCartoneros()
     {
         $logged = $this->helper->checkLoggedIn();
-        $cartoneros = $this->modelCartonero->getCartoneros();
-        $this->viewCartonero->showCartoneros($logged, $cartoneros);
+        if ($logged) {
+            $cartoneros = $this->modelCartonero->getCartoneros();
+            $this->viewCartonero->showCartoneros($logged, $cartoneros);
+        } else {
+            $this->viewCartonero->homeLocation();
+        }
     }
 
     function editarCartonero($params = null)
@@ -33,7 +37,7 @@ class ControllerCartonero
             $cartonero = $this->modelCartonero->getCartonero($id);
             $this->viewCartonero->mostrarEdicionCartonero($cartonero, $logged);
         } else {
-            $this->view->homeLocation();
+            $this->viewCartonero->homeLocation();
         }
     }
     function updateCartonero()
@@ -47,20 +51,22 @@ class ControllerCartonero
             $direccion = $_POST['cartonero_direccion'];
             $fecha_nacimiento = $_POST['cartonero_fecha_nac'];
             $categoria = $_POST['cartonero_categoria'];
+            $borrado = $_POST['cartonero_borrado'];
             if (
                 isset($nombre) && !empty($nombre) &&
                 isset($apellido) && !empty($apellido) &&
                 isset($direccion) && !empty($direccion) &&
                 isset($fecha_nacimiento) && !empty($fecha_nacimiento) &&
-                isset($categoria) && !empty($categoria)
+                isset($categoria) && !empty($categoria) &&
+                isset($borrado)
             ) {
-                $this->modelCartonero->updateCartonero($DNI, $nombre, $apellido, $direccion, $fecha_nacimiento, $categoria);
+                $this->modelCartonero->updateCartonero($DNI, $nombre, $apellido, $direccion, $fecha_nacimiento, $categoria, $borrado);
                 $this->viewCartonero->showLocationCartoneros();
             } else {
                 $this->viewCartonero->mostrarMensajeEdicion($cartonero, "danger", "Complete todos los campos.", $logged);
             }
         } else {
-            $this->view->homeLocation();
+            $this->viewCartonero->homeLocation();
         }
     }
 
@@ -90,21 +96,22 @@ class ControllerCartonero
                 $this->viewCartonero->showLocationCartoneros();
             }
         } else {
-            $this->view->homeLocation();
+            $this->viewCartonero->homeLocation();
         }
     }
 
-    function borrarCartonero($params = null) {
+    function borrarCartonero($params = null)
+    {
         $logged = $this->helper->checkLoggedIn();
-        if($logged){
+        if ($logged) {
             $dni = $params[":ID"];
             $checkear = $this->modelCartonero->deleteCartonero($dni);
-            if($checkear == 0){
+            if ($checkear == 0) {
                 $this->modelCartonero->setBorradoCartonero($dni);
             }
             $this->viewCartonero->showLocationCartoneros();
         } else {
-            $this->view->homeLocation();
+            $this->viewCartonero->homeLocation();
         }
     }
 }

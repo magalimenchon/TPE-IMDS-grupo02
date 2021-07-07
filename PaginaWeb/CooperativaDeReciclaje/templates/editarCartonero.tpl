@@ -17,9 +17,14 @@
                     {elseif $cartonero->categoria=="b"}
                         <td style="text-align: center;">Auto</td>
                     {elseif $cartonero->categoria=="c"}
-                        <td style="text-align: center;">Camioneta</td>   
-                    {elseif $cartonero->categoria=="d"} 
-                        <td style="text-align: center;">Camión</td>   
+                        <td style="text-align: center;">Camioneta</td>
+                    {elseif $cartonero->categoria=="d"}
+                        <td style="text-align: center;">Camión</td>
+                    {/if}
+                    {if $cartonero->borrado==0}
+                        <td style="text-align: center;"> No </td>
+                    {else}
+                        <td style="text-align: center;"> Si </td>
                     {/if}
                 </tr>
             </tbody>
@@ -61,9 +66,24 @@
 
                 </select>
             </div>
+            {if $cartonero->borrado==1}
+                <div class="mb-3">
+                    <label class="form-label">Borrado</label>
+                    <select name="cartonero_borrado">
+                        <option value=0>No</option>
+                        <option value=1>Si</option>
+                    </select>
+                </div>
+            {else}
+                <div class="ocultar">
+                    <label class="form-label">Borrado</label>
+                    <select name="cartonero_borrado">
+                        <option value="{$cartonero->borrado}">No</option>
+                    </select>
+                </div>
+            {/if}
             <div class="col text-center">
-                <button type="submit"
-                    class="btn btn-lg btn-success">Editar</button>
+                <button type="submit" class="btn btn-lg btn-success">Editar</button>
             </div>
         </form>
     </section>
