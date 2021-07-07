@@ -4,6 +4,7 @@ require_once './models/ModelRecoleccionMaterial.php';
 require_once './views/ViewRecoleccionMaterial.php';
 require_once './models/ModelMaterial.php';
 require_once './models/ModelCartonero.php';
+require_once './views/ViewCartonero.php';
 require_once 'helper.php';
 
 class ControllerRecoleccionMaterial
@@ -13,6 +14,7 @@ class ControllerRecoleccionMaterial
     private $modelRecoleccion;
     private $modelMaterial;
     private $modelCartonero;
+    private $viewCartonero;
     private $helper;
 
     function __construct()
@@ -21,6 +23,7 @@ class ControllerRecoleccionMaterial
         $this->modelRecoleccion = new ModelRecoleccionMaterial();
         $this->modelMaterial = new ModelMaterial();
         $this->modelCartonero = new ModelCartonero();
+        $this->viewCartonero = new ViewCartonero();
         $this->helper = new Helper();
     }
 
@@ -41,18 +44,15 @@ class ControllerRecoleccionMaterial
                 isset($fecha) && !empty($fecha)
             ) {
                 $recoleccion = $this->modelRecoleccion->getRecoleccion($cartonero, $material, $peso, $fecha);
-
-                if ($recoleccion) {
-                    $materiales = $this->modelRecoleccion->getRecoleccionesMateriales();
-                    $this->viewRecoleccion->mostrarMensaje($materiales, "danger", "Ya ha registrado esta recolección.", $logged);
+                $cartoneros = $this->modelCartonero->getCartoneros();
+                if ($recoleccion) {;
+                    $this->viewRecoleccion->mostrarMensaje($cartoneros, "danger", "Ya ha registrado esta recolección.", $logged);
                 } else {
                     $insercion = $this->modelRecoleccion->insertarRecoleccion($cartonero, $material, $peso, $fecha);
                     if ($insercion) {
-                        $materiales = $this->modelRecoleccion->getRecoleccionesMateriales();
-                        $this->viewRecoleccion->mostrarMensaje($materiales, "success", "Se registró la recolección en la base de datos.", $logged);
+                        $this->viewRecoleccion->mostrarMensaje($cartoneros, "success", "Se registró la recolección en la base de datos.", $logged);
                     } else {
-                        $materiales = $this->modelRecoleccion->getRecoleccionesMateriales();
-                        $this->viewRecoleccion->mostrarMensaje($materiales, "danger", "No se pudo registrar la recolección en la base de datos.", $logged);
+                        $this->viewRecoleccion->mostrarMensaje($cartoneros, "danger", "No se pudo registrar la recolección en la base de datos.", $logged);
                     }
                 }
             }
@@ -69,14 +69,21 @@ class ControllerRecoleccionMaterial
 
             if (isset($DNI) && !empty($DNI)) {
 
-                $filas = $this->modelRecoleccion->getRecoleccionesPorDNI($DNI);
+                $recolecciones = $this->modelRecoleccion->getRecoleccionesPorDNI($DNI);
                 $materiales = $this->modelMaterial->getMateriales();
                 $cartonero = $this->modelCartonero->getCartonero($DNI);
-                if ($cartonero) {
-                    $this->viewRecoleccion->renderResultsRecoleccionPorDNI($filas, $materiales, $cartonero, $logged);
-                } else {
-                    $filas = $this->modelRecoleccion->getRecoleccionesMateriales();
-                    $this->viewRecoleccion->mostrarMensaje($filas, "danger", "No existe el cartonero buscado en la base de datos.", $logged);
+                if($cartonero){ //existe el cartonero en la base de datos
+                    //es un cartonero activo en la cooperativa
+                    if ($cartonero && $cartonero->borrado == false) {
+                        $this->viewRecoleccion->renderResultsRecoleccionPorDNI($recolecciones, $materiales, $cartonero, $logged);
+                    }
+                    else{//es un cartonero que no está activo actualmente
+                        $cartoneros = $this->modelCartonero->getCartoneros();
+                        $this->viewRecoleccion->mostrarMensaje($cartoneros, "info", "El cartonero se encuentra inactivo en la cooperativa. Ingrese a la sección de edición para habilitarlo nuevamente", $logged);
+                    }
+                }else { //no existe el cartonero
+                    $cartoneros = $this->modelCartonero->getCartoneros();
+                    $this->viewCartonero->mostrarMensaje($cartoneros, "danger", "No existe el cartonero buscado en la base de datos. Debe registrarlo antes de ingresar su recolección.", $logged);
                 }
             }
         } else {
@@ -88,8 +95,8 @@ class ControllerRecoleccionMaterial
     {
         $logged = $this->helper->checkLoggedIn();
         if ($logged) {
-            $materiales = $this->modelRecoleccion->getRecoleccionesMateriales();
-            $this->viewRecoleccion->renderResultsRecoleccion($materiales, $logged);
+            $cartoneros = $this->modelCartonero->getCartoneros();
+            $this->viewRecoleccion->renderResultsRecoleccion($cartoneros, $logged);
         } else {
             $this->viewRecoleccion->homeLocation();
         }

@@ -3,15 +3,27 @@
 <body class="fondo">
     <section class="overlay">
         <h2>Editar cartonero</h2>
+        <br>
         {include file="mensaje.tpl"}
-        <table class="table mb-3">
+        <table class="table mb-3 table table-striped table-success table-hover table-borderless">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">DNI</th>
+                    <th style="text-align: center;">Nombre</th>
+                    <th style="text-align: center;">Apellido</th>
+                    <th style="text-align: center;">Dirección</th>
+                    <th style="text-align: center;">Fecha de nacimiento</th>
+                    <th style="text-align: center;">Vehículo</th>
+                    <th style="text-align: center;">Estado</th>
+                </tr>
+            </thead>
             <tbody>
-                <tr class="table mb-3 table table-striped table-success table-hover table-borderless">
-                    <th>{$cartonero->DNI_cartonero}</th>
-                    <td>{$cartonero->nombre_cartonero}</td>
-                    <td>{$cartonero->apellido_cartonero}</td>
-                    <td>{$cartonero->direccion_cartonero}</td>
-                    <td>{$cartonero->fecha_nac_cartonero}</td>
+                <tr>
+                    <th style="text-align: center;">{$cartonero->DNI_cartonero}</th>
+                    <td style="text-align: center;">{$cartonero->nombre_cartonero}</td>
+                    <td style="text-align: center;">{$cartonero->apellido_cartonero}</td>
+                    <td style="text-align: center;">{$cartonero->direccion_cartonero}</td>
+                    <td style="text-align: center;">{$cartonero->fecha_nac_cartonero}</td>
                     {if $cartonero->categoria=="a"}
                         <td style="text-align: center;"> - </td>
                     {elseif $cartonero->categoria=="b"}
@@ -22,14 +34,16 @@
                         <td style="text-align: center;">Camión</td>
                     {/if}
                     {if $cartonero->borrado==0}
-                        <td style="text-align: center;"> No </td>
+                        <td style="text-align: center;"> Activo </td>
                     {else}
-                        <td style="text-align: center;"> Si </td>
+                        <td style="text-align: center;"> Inactivo </td>
                     {/if}
                 </tr>
             </tbody>
         </table>
+        <br>
         <h2>Nuevos Datos</h2>
+        <br>
         <form action="modificar_cartonero" method="post" enctype="multipart/form-data">
             <div class="ocultar">
                 <label class="form-label">DNI cartonero</label>
@@ -57,21 +71,42 @@
                     value="{$cartonero->fecha_nac_cartonero}" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Categoria vehiculo</label>
+                <label class="form-label">Vehículo</label>
                 <select name="cartonero_categoria">
-                    <option value="a">-</option>
-                    <option value="b">Auto</option>
-                    <option value="c">Camioneta</option>
-                    <option value="d">Camión</option>
-
+                    {if $cartonero->categoria eq "a"}
+                        <option value="a" selected> - </option>
+                        <option value="b">Auto</option>
+                        <option value="c">Camioneta</option>
+                        <option value="d">Camión</option>
+                    {else if $cartonero->categoria eq "b"}
+                        <option value="a"> - </option>
+                        <option value="b" selected>Auto</option>
+                        <option value="c">Camioneta</option>
+                        <option value="d">Camión</option>
+                    {else if $cartonero->categoria eq "c"}
+                        <option value="a"> - </option>
+                        <option value="b">Auto</option>
+                        <option value="c" selected>Camioneta</option>
+                        <option value="d">Camión</option>
+                    {else}
+                        <option value="a"> - </option>
+                        <option value="b">Auto</option>
+                        <option value="c">Camioneta</option>
+                        <option value="d" selected>Camión</option>
+                    {/if}
                 </select>
             </div>
             {if $cartonero->borrado==1}
                 <div class="mb-3">
-                    <label class="form-label">Borrado</label>
+                    <label class="form-label">Estado</label>
                     <select name="cartonero_borrado">
-                        <option value=0>No</option>
-                        <option value=1>Si</option>
+                    {if $cartonero->borrado==0}
+                        <option value=0 selected>Activo</option>
+                        <option value=1>Inactivo</option>
+                    {else}
+                        <option value=0>Activo</option>
+                        <option value=1 selected>Inactivo</option>
+                    {/if}
                     </select>
                 </div>
             {else}

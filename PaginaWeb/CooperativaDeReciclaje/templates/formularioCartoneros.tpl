@@ -1,8 +1,9 @@
 
         <section class="overlay">
+            <br>
             <h2>Añadir cartonero</h2>
-            
-            <form action="altaCartonero" method="post">
+            <br>
+            <form action="cartonero" method="post">
                 <div class="mb-3">
                     <label class="form-label">Nombre</label>
                     <input type="text" class="form-control" name="cartonero_nombre" placeholder="Nombre" required>
@@ -25,12 +26,12 @@
                 </div>
                 
                 <div class="mb-3">
-                <label for="title">Categoria de volumen</label>
+                <label for="title">Vehículo</label>
                     <select name="cartonero_select">
-                        <option value="a">Entra en una caja</option>
-                        <option value="b">Entra en el baúl de un auto</option>
-                        <option value="c">Entra en la caja de una camioneta</option>
-                        <option value="d">Se necesita un camión</option>
+                        <option value="a"> - </option>
+                        <option value="b">Auto</option>
+                        <option value="c">Camioneta</option>
+                        <option value="d">Camión</option>
                     </select>
                 </div>
                 <div class="col text-center">

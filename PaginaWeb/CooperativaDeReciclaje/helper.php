@@ -3,7 +3,6 @@ require_once 'views/ViewSession.php';
 
 class Helper
 {
-    //VEO SI ESTA LOGGEADO Y ES ADMINISTRADOR
     private $viewSession;
 
     function __construct()

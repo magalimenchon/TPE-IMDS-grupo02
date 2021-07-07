@@ -23,7 +23,12 @@ class ControllerCartonero
         $logged = $this->helper->checkLoggedIn();
         if ($logged) {
             $cartoneros = $this->modelCartonero->getCartoneros();
-            $this->viewCartonero->showCartoneros($logged, $cartoneros);
+            if($cartoneros){
+                $this->viewCartonero->showCartoneros($cartoneros, $logged);
+            }
+            else{
+                $this->viewCartonero->mostrarMensaje($cartoneros, "info", "Aún no existen cartoneros en la base de datos. Puede ingresar un cartonero en el siguiente formulario.", $logged);
+            }
         } else {
             $this->viewCartonero->homeLocation();
         }
@@ -72,8 +77,10 @@ class ControllerCartonero
 
     function insertCartonero()
     {
+        $cartoneros = $this->modelCartonero->getCartoneros();
+
         $logged = $this->helper->checkLoggedIn();
-        $time_now = date("Y-m-d ");
+        $time_now = date("Y-m-d");
 
         if ($logged == true) {
             $nombre = $_POST['cartonero_nombre'];
@@ -89,12 +96,19 @@ class ControllerCartonero
                 isset($dir) && !empty($dir) &&
                 isset($fecha) && !empty($fecha) &&
                 isset($categoria) && !empty($categoria)
-                && $dni> 1 && $fecha < $time_now
             ) {
-                $this->modelCartonero->insertCartonero($nombre, $apellido, $dni, $dir, $fecha, $categoria);
-
-                $this->viewCartonero->showLocationCartoneros();
+                if($dni < 999999 || $dni > 100000000){
+                    $this->viewCartonero->mostrarMensaje($cartoneros, "danger", "DNI inválido. Ingrese los datos nuevamente", $logged);
+                }
+                else if($fecha > $time_now){
+                    $this->viewCartonero->mostrarMensaje($cartoneros, "danger", "Fecha inválida. Ingrese los datos nuevamente", $logged);
+                }
+                else{
+                    $this->modelCartonero->insertCartonero($nombre, $apellido, $dni, $dir, $fecha, $categoria);
+                    $this->viewCartonero->showLocationCartoneros();
+                }
             }
+            
         } else {
             $this->viewCartonero->homeLocation();
         }

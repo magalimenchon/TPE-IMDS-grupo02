@@ -32,24 +32,30 @@
     <br><br>
     <h4>Información sobre recolecciones:</h4>
     <br>
-    <table class="table mb-3 table-hover table-borderless">
-           <thead>
-               <tr>
-                   <th>Fecha de recolección</th>
-                   <th>Nombre Material</th>
-                   <th>Peso Material</th>
-               </tr>
-           </thead>
-       <tbody>
-        {foreach $filas as $fila} 
+    {if isset($filas)}
+        <table class="table mb-3 table-hover table-borderless">
+            <thead>
                 <tr>
-                    <td>{$fila->fecha_recoleccion}</td>
-                    <td>{$fila->material_recolectado}</td>
-                    <td>{$fila->peso_material_recolectado}</td>
+                    <th>Fecha de recolección</th>
+                    <th>Nombre Material</th>
+                    <th>Peso Material</th>
                 </tr>
-        {/foreach}
-        </tbody>    
-    </table>
+            </thead>
+        <tbody>
+            {foreach $filas as $fila} 
+                    <tr>
+                        <td>{$fila->fecha_recoleccion}</td>
+                        <td>{$fila->material_recolectado}</td>
+                        <td>{$fila->peso_material_recolectado}</td>
+                    </tr>
+            {/foreach}
+            </tbody>    
+        </table>
+    {else}
+        <div class="alert alert-info" role="alert">
+            No existen pedidos de recolección actualmente
+        </div>
+    {/if}
     <br><br>
     {include file="formularioRecoleccion.tpl"}
     <br>

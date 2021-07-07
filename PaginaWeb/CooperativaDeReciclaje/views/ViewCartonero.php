@@ -8,18 +8,24 @@ class ViewCartonero {
         $this-> smarty= new Smarty();
     }
 
-    function showFormulario($check){
+    //listado cartoneros
+    function showCartoneros($cartoneros, $logged){
         $this->smarty->assign('base_url', BASE_URL);
-        $this->smarty->assign('logged', $check);
+        $this->smarty->assign('logged', $logged);
+        $this->smarty->assign('cartoneros', $cartoneros);
+        $this->smarty->assign('tipoAlerta', null);
 
-        $this-> smarty->display('templates/formularioCartoneros.tpl');
+        $this-> smarty->display('templates/listadoCartoneros.tpl');
     }
 
-    //listado cartoneros
-    function showCartoneros($check, $cartoneros){
+    //mostrar notificación de tabla de cartoneros vacía
+    function mostrarMensaje($cartoneros, $tipoAlerta, $mensaje, $logged){
+
         $this->smarty->assign('base_url', BASE_URL);
-        $this->smarty->assign('logged', $check);
+        $this->smarty->assign('logged', $logged);
         $this->smarty->assign('cartoneros', $cartoneros);
+        $this->smarty->assign('tipoAlerta', $tipoAlerta);
+        $this->smarty->assign('mensaje', $mensaje);
 
         $this-> smarty->display('templates/listadoCartoneros.tpl');
     }
